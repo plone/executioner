@@ -24,13 +24,12 @@ export class AppComponent {
         this.traverser.addView('view', '*', GenericView);
         this.traverser.addView('add', '*', GenericAddView);
 
-        this.services.authentication.isAuthenticated.subscribe(auth => {
-            console.log('app component', auth);
-            this.isAuthenticated = auth.state;
-        });
+        this.services.authentication.isAuthenticated.subscribe(auth => this.isAuthenticated = auth.state);
 
-        this.services.resource.traversingUnauthorized.subscribe(() => {
-            this.services.authentication.logout();
-        });
+        this.services.resource.traversingUnauthorized.subscribe(() => this.services.authentication.logout());
+    }
+
+    logout() {
+        this.services.authentication.logout();
     }
 }
