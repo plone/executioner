@@ -7,14 +7,15 @@ import { Target } from 'angular-traversal';
     templateUrl: './view.html',
 })
 export class GenericView extends ViewView {
-    availableBehaviors: string[];
+    availableBehaviors: {id: string, name: string}[];
     behaviors: string[];
+    types = [{id: 'Folder', name: 'Folder'}, {id: 'Item', name: 'Item'}];
 
     onTraverse(target: Target) {
         super.onTraverse(target);
         this.services.resource.availableBehaviors(target.contextPath).subscribe(behaviors => {
             if (behaviors.length > 0) {
-                this.availableBehaviors = behaviors;
+                this.availableBehaviors = behaviors.map(b => ({id: b, name: b}));
             }
         });
         this.services.resource.getBehaviors(target.contextPath).subscribe(behaviors => {
@@ -22,6 +23,10 @@ export class GenericView extends ViewView {
                 this.behaviors = behaviors;
             }
         });
+    }
+
+    addItem(type) {
+        this.services.traverser.traverse(`${this.context['@id']}/@@add?type=${type}`);
     }
 
     deleteItem(path: string) {

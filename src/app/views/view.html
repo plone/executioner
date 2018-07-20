@@ -1,10 +1,13 @@
 <h2>{{ context.title }}</h2>
 <div *ngIf="context['@type'] === 'Container' || context['@type'] === 'Folder'">
-    <a [traverseTo]="context['@id'] + '/@@add?type=Folder'">Add new folder</a>
-    <a [traverseTo]="context['@id'] + '/@@add?type=Item'">Add new item</a>
+    <pa-select placeholder="Add new content…"
+        (selection)="addItem($event)" [options]="types">
+    </pa-select>
 </div>
 <div *ngIf="availableBehaviors">
-    <button *ngFor="let behavior of availableBehaviors" (click)="addBehavior(behavior)">{{ behavior }}</button>
+    <pa-select placeholder="Enable behavior…"
+        (selection)="addBehavior($event)" [options]="availableBehaviors">
+    </pa-select>
 </div>
 <div *ngIf="behaviors">
     <section *ngFor="let behavior of behaviors">
