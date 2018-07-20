@@ -1,0 +1,18 @@
+{
+    "angular-traversal": {
+        "path": "/src",
+        "url": "git@github.com:makinacorpus/angular-traversal.git",
+        "branch": "guillotina"
+    },
+    "plone.restapi-angular": {
+        "package": "@plone/restapi-angular",
+        "path": "/src",
+        "url": "git@github.com:plone/plone.restapi-angular.git",
+        "branch": "guillotina"
+    },
+    "pastanaga-angular": {
+        "path": "/projects/pastanaga",
+        "url": "git@github.com:plone/pastanaga-angular.git",
+        "branch": "master"
+    }
+}

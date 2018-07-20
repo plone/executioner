@@ -1,0 +1,26 @@
+<ng-container *ngIf="!type">Add a new:
+    <ul>
+        <li *ngFor="let type of types">
+            <a [traverseTo]="'@@add?type=' + type">{{ type }}</a>
+        </li>
+    </ul>
+</ng-container>
+<form *ngIf="type" #f="ngForm" (submit)="onSave(f.value)">
+    <p>
+        <label>Id :
+            <input type="text" name="id" ngModel />
+        </label>
+    </p>
+    <p>
+        <label>Title :
+            <input type="text" name="title" ngModel />
+        </label>
+    </p>
+    <p>
+        <label>Description :
+            <textarea name="description" ngModel></textarea>
+        </label>
+    </p>
+    <button (click)="f.submit()">Save</button>
+    <button (click)="onCancel()">Cancel</button>
+</form>

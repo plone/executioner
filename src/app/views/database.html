@@ -1,0 +1,8 @@
+<div>
+    <a [traverseTo]="'@@add?type=Container'">Add new container</a>
+    <ul>
+        <li *ngFor="let container of context.containers">
+            <a [traverseTo]="'/' + container">{{ container }}</a>
+        </li>
+    </ul>
+</div>
