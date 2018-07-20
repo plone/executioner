@@ -17,8 +17,14 @@
             "dom"
         ],
         "paths": {
+            "angular-traversal": [
+                "develop/angular-traversal/src"
+            ],
+            "@plone/restapi-angular": [
+                "develop/plone.restapi-angular/src"
+            ],
             "pastanaga-angular": [
-                "develop/pastanaga-angular/projects/pastanaga"
+                "develop/pastanaga-angular/projects/pastanaga/src"
             ]
         }
     }

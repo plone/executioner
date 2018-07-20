@@ -4,6 +4,7 @@ import { PloneViews, Services } from '@plone/restapi-angular';
 import { DatabaseView } from './views/database';
 import { GenericView } from './views/view';
 import { GenericAddView } from './views/add';
+import { concatMap, filter } from 'rxjs/operators';
 
 @Component({
     selector: 'app-root',
@@ -22,9 +23,12 @@ export class AppComponent {
         this.traverser.addView('view', 'Database', DatabaseView);
         this.traverser.addView('view', '*', GenericView);
         this.traverser.addView('add', '*', GenericAddView);
+
         this.services.authentication.isAuthenticated.subscribe(auth => {
+            console.log('app component', auth);
             this.isAuthenticated = auth.state;
         });
+
         this.services.resource.traversingUnauthorized.subscribe(() => {
             this.services.authentication.logout();
         });

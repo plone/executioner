@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Services } from '@plone/restapi-angular';
-import { filter, concatMap } from 'rxjs/operators';
+import { filter, concatMap, tap } from 'rxjs/operators';
 import { take } from 'rxjs-compat/operator/take';
 
 @Injectable()
 export class AdminService {
 
-    constructor(public services: Services) {}
+    constructor(public services: Services) {
+
+    }
 
     doLogin(login: string, password: string) {
         // Database object does not provide JWT, we use basic auth
@@ -18,4 +20,6 @@ export class AdminService {
         ).take(1).subscribe();
         this.services.traverser.traverse(this.services.traverser.target.getValue().contextPath);
     }
+
+
 }
