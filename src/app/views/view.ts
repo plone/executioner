@@ -8,12 +8,18 @@ import { Target } from 'angular-traversal';
 })
 export class GenericView extends ViewView {
     availableBehaviors: string[];
+    behaviors: string[];
 
     onTraverse(target: Target) {
         super.onTraverse(target);
         this.services.resource.availableBehaviors(target.contextPath).subscribe(behaviors => {
             if (behaviors.length > 0) {
                 this.availableBehaviors = behaviors;
+            }
+        });
+        this.services.resource.getBehaviors(target.contextPath).subscribe(behaviors => {
+            if (behaviors.length > 0) {
+                this.behaviors = behaviors;
             }
         });
     }

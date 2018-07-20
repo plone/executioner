@@ -6,6 +6,14 @@
 <div *ngIf="availableBehaviors">
     <button *ngFor="let behavior of availableBehaviors" (click)="addBehavior(behavior)">{{ behavior }}</button>
 </div>
+<div *ngIf="behaviors">
+    <section *ngFor="let behavior of behaviors">
+        <h3>{{ behavior }}</h3>
+        <div *ngFor="let field of context[behavior] | keyvalue">
+            <small>{{ field.key }}:</small> {{ field.value }}
+        </div>
+    </section>
+</div>
 <ul *ngIf="context.items">
     <li *ngFor="let item of context.items">
         <a [traverseTo]="item['@id']">{{ item['@name']}}</a>
