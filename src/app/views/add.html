@@ -6,21 +6,9 @@
     </ul>
 </ng-container>
 <form *ngIf="type" #f="ngForm" (submit)="onSave(f.value)">
-    <p>
-        <label>Id :
-            <input type="text" name="id" ngModel />
-        </label>
-    </p>
-    <p>
-        <label>Title :
-            <input type="text" name="title" ngModel />
-        </label>
-    </p>
-    <p>
-        <label>Description :
-            <textarea name="description" ngModel></textarea>
-        </label>
-    </p>
-    <button (click)="f.submit()">Save</button>
-    <button (click)="onCancel()">Cancel</button>
+    <pa-input name="id" ngModel>Id</pa-input>
+    <pa-input name="title" ngModel>Title</pa-input>
+
+    <pa-button (click)="onCancel()" color="secondary" size="small">Cancel</pa-button>
+    <pa-button type="submit"  border size="small">Save</pa-button>
 </form>

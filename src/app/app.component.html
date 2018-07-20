@@ -1,5 +1,8 @@
 <header>
-    <img width="128" height="128" src="assets/logo.svg" />
+    <a href="#" [traverseTo]="'/'">
+        <img width="128" height="128" src="assets/logo.svg"/>
+    </a>
+
     <pa-button *ngIf="isAuthenticated" size="small" (click)="logout()">Logout</pa-button>
 </header>
 

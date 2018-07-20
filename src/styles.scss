@@ -1,3 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "develop/pastanaga-angular/projects/pastanaga/src/lib/styles/common-reset";
 
+html, body {
+    overflow: auto;
+}
+

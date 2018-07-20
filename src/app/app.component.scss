@@ -5,6 +5,14 @@
     header {
         position: relative;
 
+        a:focus, a:active {
+            box-shadow: none;
+        }
+
+        img {
+            cursor: pointer;
+        }
+
         pa-button {
             position: absolute;
             right: 0;
