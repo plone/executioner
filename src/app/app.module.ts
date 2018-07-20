@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { RESTAPIModule } from '@plone/restapi-angular';
+import { TraversalModule } from 'angular-traversal';
 import { AdminService } from './service';
 import { AppComponent } from './app.component';
 import { BasicAuthLoginComponent } from './views/login';
@@ -30,6 +31,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         BrowserModule,
         RESTAPIModule,
         FormsModule,
+        TraversalModule,
 
         TranslateModule.forRoot({
             loader: {

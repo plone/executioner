@@ -1,8 +1,8 @@
 <div>
-    <a [traverseTo]="'@@add?type=Container'">Add new container</a>
+    <pa-button border [traverseTo]="'@@add?type=Container'">Add new container</pa-button>
     <ul>
         <li *ngFor="let container of context.containers">
-            <a [traverseTo]="'/' + container">{{ container }}</a>
+            <pa-button [traverseTo]="'/' + container">{{ container }}</pa-button>
         </li>
     </ul>
 </div>
