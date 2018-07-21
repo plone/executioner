@@ -5,7 +5,7 @@
             {{item.title}}
         </li>
     </ul>
-    <g-toolbar [context]="context"></g-toolbar>
+    <g-toolbar [context]="parent.resource" [parentPath]="parent.parentPath"></g-toolbar>
 </div>
 
 <div class="list-container" *ngIf="!!context && !!context.items">

@@ -1,6 +1,6 @@
 <div class="g-toolbar">
     <pa-button
-    icon="add" [traverseTo]="context['@id'].split('/').slice(0, -1).join('/') + '/@@add'"></pa-button>
+    icon="add" [traverseTo]="parentPath + '/@@add'"></pa-button>
     <pa-button color="secondary"
     icon="pen" [traverseTo]="context['@id'] + '/@@edit'"></pa-button>
     <pa-button color="secondary"
