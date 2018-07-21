@@ -30,9 +30,9 @@ export class NavigationComponent extends TraversingComponent {
                     return this.loadParent(parent, parentPath, target.context);
                 })).subscribe(() => {
                     this.parentList.reverse();
-                    console.log(this.parentList);
                     const columnCount = !!this.context.items ? this.parentList.length + 1 : this.parentList.length;
                     this.elementRef.nativeElement.style.setProperty('--colNum', `${columnCount}`);
+                    this.scrollRight();
                 });
             }
         }
@@ -68,5 +68,12 @@ export class NavigationComponent extends TraversingComponent {
         } else if (resource.containers) {
             return resource.containers.map(item => ({path: `${currentPath}/${item}`, title: item}));
         }
+    }
+
+    private scrollRight() {
+        setTimeout(() => {
+            const maxScroll = this.elementRef.nativeElement.scrollWidth;
+            this.elementRef.nativeElement.scrollTo({ left: maxScroll, top: 0, behavior: 'smooth' });
+        }, 0);
     }
 }
