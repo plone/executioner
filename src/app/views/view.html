@@ -1,7 +1,8 @@
 <pa-badge class="content-type" hexaColor="#FF4400">
     {{ context['@type'] }}</pa-badge>
-<h2>{{ context.title }}</h2>
+<h2>{{ context['@name'] }}</h2>
 <div>
+    <legend>Title</legend> {{ context.title }}
     <h3>Behaviors</h3>
     <section *ngIf="behaviors">
         <ng-container *ngFor="let behavior of behaviors">

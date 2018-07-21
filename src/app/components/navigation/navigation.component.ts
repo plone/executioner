@@ -27,9 +27,10 @@ export class NavigationComponent extends TraversingComponent {
             const parentPath = this.getParentPath(target.context);
             if (parentPath) {
                 this.services.resource.get(parentPath).pipe(concatMap(parent => {
-                    return this.loadParent(parent, parentPath);
+                    return this.loadParent(parent, parentPath, target.context);
                 })).subscribe(() => {
                     this.parentList.reverse();
+                    console.log(this.parentList);
                     const columnCount = !!this.context.items ? this.parentList.length + 1 : this.parentList.length;
                     this.elementRef.nativeElement.style.setProperty('--colNum', `${columnCount}`);
                 });
@@ -37,16 +38,16 @@ export class NavigationComponent extends TraversingComponent {
         }
     }
 
-    private loadParent(resource, currentPath): Observable<any> {
+    private loadParent(resource, currentPath, child): Observable<any> {
         this.parentList.push({
-            resource: resource,
-            parentPath: currentPath.split('/').slice(0, -1).join('/'),
+            resource: child,
+            parentPath: currentPath,
             children: this.getChildren(resource, currentPath),
         });
         const parentPath = this.getParentPath(resource);
         if (parentPath) {
             return this.services.resource.get(parentPath).pipe(
-                concatMap(parent => this.loadParent(parent, parentPath))
+                concatMap(parent => this.loadParent(parent, parentPath, resource))
             );
         } else {
             return Observable.of(null);
