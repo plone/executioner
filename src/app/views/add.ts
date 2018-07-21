@@ -8,15 +8,17 @@ import { AddView } from '@plone/restapi-angular';
 })
 export class GenericAddView extends AddView {
     types: string[] = [];
+    path: string;
 
     onTraverse(target: any) {
-        if (!this.type) {
+        if (!this.type && target.context['@id']) {
             this.services.resource.addableTypes(target.context['@id'])
             .subscribe(types => {
                 types.sort();
                 this.types = types;
             });
         }
+        this.path = target.context['@id'] || target.contextPath;
     }
 
     onSave(model: any) {

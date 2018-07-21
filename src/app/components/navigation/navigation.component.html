@@ -9,7 +9,7 @@
 </div>
 
 <div class="list-container" *ngIf="!!context && !!context.items">
-    <g-toolbar [context]="context"></g-toolbar>
+    <g-toolbar [parentPath]="context['@id']"></g-toolbar>
     <ul>
         <li *ngFor="let item of context.items" [traverseTo]="item['@id']">
             {{item['@name']}}
