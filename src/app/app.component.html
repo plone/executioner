@@ -1,6 +1,6 @@
 <header>
     <a href="#" [traverseTo]="'/'">
-        <img height="64" src="assets/logo.svg"/>
+        <img height="64" src="assets/logo.svg" />
     </a>
 
     <pa-button *ngIf="isAuthenticated" size="small" (click)="logout()">Logout</pa-button>
@@ -16,3 +16,9 @@
 
     <g-basic-auth-login *ngIf="!isAuthenticated"></g-basic-auth-login>
 </main>
+
+<aside id="pa-toasts-block">
+    <div class="pa-toasts-container">
+        <div #toastsContainer></div>
+    </div>
+</aside>
