@@ -12,11 +12,3 @@
         </ng-container>
     </section>
 </div>
-<div *ngIf="context.is_folderish">
-    <h3>Contents</h3>
-    <ul *ngIf="context.items">
-        <li *ngFor="let item of context.items">
-            <a [traverseTo]="item['@id']">{{ item['@name']}}</a>
-        </li>
-    </ul>
-</div>
