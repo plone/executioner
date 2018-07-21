@@ -13,6 +13,6 @@
     "pastanaga-angular": {
         "path": "/projects/pastanaga",
         "url": "git@github.com:plone/pastanaga-angular.git",
-        "branch": "master"
+        "branch": "guillotina"
     }
 }
