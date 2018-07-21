@@ -1,9 +1,5 @@
 <pa-badge class="content-type" [isAccented]="true" hexaColor="#FF4400">{{ context['@type'] }}</pa-badge>
 <h2>{{ context.title }}</h2>
-<div *ngIf="context['@type'] === 'Container' || context['@type'] === 'Folder'">
-    <pa-select placeholder="Add new content…" (selection)="addItem($event)" [options]="types">
-    </pa-select>
-</div>
 <div>
     <h3>Behaviors</h3>
     <div *ngIf="availableBehaviors">
@@ -19,9 +15,16 @@
         </ng-container>
     </section>
 </div>
-<ul *ngIf="context.items">
-    <li *ngFor="let item of context.items">
-        <a [traverseTo]="item['@id']">{{ item['@name']}}</a>
-        <button (click)="deleteItem(item['@id'])">Delete</button>
-    </li>
-</ul>
+<div *ngIf="context.is_folderish">
+    <h3>Contents</h3>
+    <div *ngIf="context['@type'] === 'Container' || context['@type'] === 'Folder'">
+        <pa-select placeholder="Add new content…" (selection)="addItem($event)" [options]="types">
+        </pa-select>
+    </div>
+    <ul *ngIf="context.items">
+        <li *ngFor="let item of context.items">
+            <a [traverseTo]="item['@id']">{{ item['@name']}}</a>
+            <button (click)="deleteItem(item['@id'])">Delete</button>
+        </li>
+    </ul>
+</div>
