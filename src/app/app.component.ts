@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
+import { concatMap, filter } from 'rxjs/operators';
 import { Traverser } from 'angular-traversal';
 import { PloneViews, Services } from '@plone/restapi-angular';
 import { DatabaseView } from './views/database';
 import { GenericView } from './views/view';
 import { GenericAddView } from './views/add';
-import { concatMap, filter } from 'rxjs/operators';
+import { SharingView } from './views/sharing';
+import { BehaviorsView } from './views/behaviors';
 
 @Component({
     selector: 'g-root',
@@ -23,6 +25,8 @@ export class AppComponent {
         this.traverser.addView('view', 'Database', DatabaseView);
         this.traverser.addView('view', '*', GenericView);
         this.traverser.addView('add', '*', GenericAddView);
+        this.traverser.addView('sharing', '*', SharingView);
+        this.traverser.addView('behaviors', '*', BehaviorsView);
 
         this.services.authentication.isAuthenticated.subscribe(auth => this.isAuthenticated = auth.state);
 

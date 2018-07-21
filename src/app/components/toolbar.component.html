@@ -1,0 +1,12 @@
+<div class="g-toolbar">
+    <pa-button *ngIf="context.is_folderish"
+    icon="add" [traverseTo]="context['@id'] + '/@@add'"></pa-button>
+    <pa-button
+    icon="pen" [traverseTo]="context['@id'] + '/@@edit'"></pa-button>
+    <pa-button
+    icon="share" [traverseTo]="context['@id'] + '/@@behaviors'"></pa-button>
+    <pa-button
+    icon="sharing" [traverseTo]="context['@id'] + '/@@sharing'"></pa-button>
+    <pa-button
+    icon="delete" color="destructive" (click)="delete()"></pa-button>
+</div>

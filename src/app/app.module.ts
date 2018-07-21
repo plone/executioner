@@ -12,8 +12,11 @@ import { BasicAuthLoginComponent } from './views/login';
 import { DatabaseView } from './views/database';
 import { GenericView } from './views/view';
 import { GenericAddView } from './views/add';
+import { SharingView } from './views/sharing';
+import { BehaviorsView } from './views/behaviors';
 import { ButtonModule, TextFieldModule, BadgeModule } from 'pastanaga-angular';
 import { NavigationComponent } from './components/navigation/navigation.component';
+import { ToolbarComponent } from './components/toolbar.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -24,10 +27,13 @@ export function HttpLoaderFactory(http: HttpClient) {
     declarations: [
         AppComponent,
         BasicAuthLoginComponent,
+        ToolbarComponent,
         DatabaseView,
         GenericView,
         GenericAddView,
         NavigationComponent,
+        SharingView,
+        BehaviorsView,
     ],
     imports: [
         BrowserModule,
@@ -46,7 +52,13 @@ export function HttpLoaderFactory(http: HttpClient) {
         TextFieldModule,
         BadgeModule,
     ],
-    entryComponents: [DatabaseView, GenericView, GenericAddView],
+    entryComponents: [
+        DatabaseView,
+        GenericView,
+        GenericAddView,
+        SharingView,
+        BehaviorsView,
+    ],
     providers: [
         AdminService,
         {
@@ -59,5 +71,4 @@ export function HttpLoaderFactory(http: HttpClient) {
     ],
     bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule {}
