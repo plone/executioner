@@ -8,11 +8,11 @@
     </ul>
 </div>
 
-<div class="list-container" *ngIf="!!context && !!context.items">
-    <g-toolbar [parentPath]="context['@id']"></g-toolbar>
+<div class="list-container" *ngIf="!!contextChildren">
+    <g-toolbar [parentPath]="contextPath"></g-toolbar>
     <ul>
-        <li *ngFor="let item of context.items" [traverseTo]="item['@id']">
-            {{item['@name']}}
+        <li *ngFor="let item of contextChildren" [traverseTo]="item.path">
+            {{item.title}}
         </li>
     </ul>
 </div>

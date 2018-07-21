@@ -5,4 +5,10 @@ import { ViewView } from '@plone/restapi-angular';
   selector: 'g-database-view',
   templateUrl: './database.html',
 })
-export class DatabaseView extends ViewView {}
+export class DatabaseView extends ViewView {
+    name: string;
+
+    onTraverse(target) {
+        this.name = target.contextPath.split('/').pop();
+    }
+}

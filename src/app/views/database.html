@@ -1,8 +1,2 @@
-<div>
-    <pa-button border [traverseTo]="'@@add?type=Container'">Add new container</pa-button>
-    <ul>
-        <li *ngFor="let container of context.containers">
-            <pa-button [traverseTo]="'/' + container">{{ container }}</pa-button>
-        </li>
-    </ul>
-</div>
+<pa-badge class="content-type" hexaColor="#FF4400">Database</pa-badge>
+<h2>{{ name }}</h2>

@@ -3,6 +3,7 @@ import { concatMap, filter } from 'rxjs/operators';
 import { Traverser } from 'angular-traversal';
 import { PloneViews, Services } from '@plone/restapi-angular';
 import { DatabaseView } from './views/database';
+import { ApplicationView } from './views/application';
 import { GenericView } from './views/view';
 import { GenericAddView } from './views/add';
 import { SharingView } from './views/sharing';
@@ -25,6 +26,7 @@ export class AppComponent implements OnInit {
         private toaster: Toaster,
     ) {
         this.views.initialize();
+        this.traverser.addView('view', 'Application', ApplicationView);
         this.traverser.addView('view', 'Database', DatabaseView);
         this.traverser.addView('view', '*', GenericView);
         this.traverser.addView('add', '*', GenericAddView);

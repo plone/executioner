@@ -10,6 +10,7 @@ import { AdminService } from './service';
 import { AppComponent } from './app.component';
 import { BasicAuthLoginComponent } from './views/login';
 import { DatabaseView } from './views/database';
+import { ApplicationView } from './views/application';
 import { GenericView } from './views/view';
 import { GenericAddView } from './views/add';
 import { SharingView } from './views/sharing';
@@ -29,6 +30,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         BasicAuthLoginComponent,
         ToolbarComponent,
         DatabaseView,
+        ApplicationView,
         GenericView,
         GenericAddView,
         NavigationComponent,
@@ -54,6 +56,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         ToasterModule.forRoot(),
     ],
     entryComponents: [
+        ApplicationView,
         DatabaseView,
         GenericView,
         GenericAddView,
@@ -65,7 +68,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         {
             provide: 'CONFIGURATION',
             useValue: {
-                BACKEND_URL: 'http://127.0.0.1:8080/db',
+                BACKEND_URL: 'http://127.0.0.1:8080',
                 CLIENT_TIMEOUT: 5000,
             },
         },

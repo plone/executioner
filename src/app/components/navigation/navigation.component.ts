@@ -12,6 +12,8 @@ import { Observable } from 'rxjs';
 export class NavigationComponent extends TraversingComponent {
     parentList: any[];
     context: any;
+    contextPath: string;
+    contextChildren: any[];
 
     constructor(
         public services: Services,
@@ -23,7 +25,8 @@ export class NavigationComponent extends TraversingComponent {
     onTraverse(target: Target) {
         this.context = target.context;
         this.parentList = [];
-        if (!!target.context && !!target.context['@id']) {
+        if (!!target.context) {
+            this.contextPath = target.contextPath;
             const parentPath = this.getParentPath(target.context);
             if (parentPath) {
                 this.services.resource.get(parentPath).pipe(concatMap(parent => {
@@ -34,6 +37,17 @@ export class NavigationComponent extends TraversingComponent {
                     this.elementRef.nativeElement.style.setProperty('--colNum', `${columnCount}`);
                     this.scrollRight();
                 });
+            }
+
+            if (this.context['@type'] === 'Application') {
+                this.contextChildren = this.context.databases
+                .map(db => ({path: '/' + db, title: db}));
+            } else if (this.context['@type'] === 'Database') {
+                this.contextChildren = this.context.containers
+                .map(container => ({path: this.contextPath + '/' + container, title: container}));
+            } else if (!!this.context.items) {
+                this.contextChildren = this.context.items
+                .map(item => ({path: item['@id'], title: item['@name']}));
             }
         }
     }
