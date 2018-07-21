@@ -1,14 +1,18 @@
-<ng-container *ngIf="!type">Add a new:
+<ng-container *ngIf="!type">
+    <h2>Add new…</h2>
     <ul>
         <li *ngFor="let type of types">
-            <a [traverseTo]="'@@add?type=' + type">{{ type }}</a>
+            <pa-button border [traverseTo]="'@@add?type=' + type">{{ type }}</pa-button>
         </li>
     </ul>
 </ng-container>
-<form *ngIf="type" #f="ngForm" (submit)="onSave(f.value)">
-    <pa-input name="id" ngModel>Id</pa-input>
-    <pa-input name="title" ngModel>Title</pa-input>
+<ng-container *ngIf="type">
+    <h2>Add new {{ type }}</h2>
+    <form *ngIf="type" #f="ngForm" (submit)="onSave(f.value)">
+        <pa-input name="id" ngModel>Id</pa-input>
+        <pa-input name="title" ngModel>Title</pa-input>
 
-    <pa-button (click)="onCancel()" color="secondary" size="small">Cancel</pa-button>
-    <pa-button type="submit"  border size="small">Save</pa-button>
-</form>
+        <pa-button (click)="onCancel()" color="secondary" size="small">Cancel</pa-button>
+        <pa-button type="submit"  border size="small">Save</pa-button>
+    </form>
+</ng-container>
