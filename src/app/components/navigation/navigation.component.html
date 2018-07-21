@@ -2,7 +2,7 @@
     <g-toolbar [context]="parent.resource" [parentPath]="parent.parentPath"></g-toolbar>
     <ul>
         <li *ngFor="let item of parent.children" [traverseTo]="item.path"
-            [class.active]="context['@id'].startsWith(item.path)">
+            [class.active]="context['@id'] === item.path || context['@id'].startsWith(item.path + '/')">
             {{item.title}}
         </li>
     </ul>
