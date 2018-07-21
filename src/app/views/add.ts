@@ -9,16 +9,22 @@ import { AddView } from '@plone/restapi-angular';
 export class GenericAddView extends AddView {
     types: string[] = [];
     path: string;
+    name: string;
 
     onTraverse(target: any) {
-        if (!this.type && target.context['@id']) {
-            this.services.resource.addableTypes(target.context['@id'])
-            .subscribe(types => {
-                types.sort();
-                this.types = types;
-            });
+        if (!this.type) {
+            if (target.context['@id']) {
+                this.services.resource.addableTypes(target.context['@id'])
+                .subscribe(types => {
+                    types.sort();
+                    this.types = types;
+                });
+            } else if (target.context['@type'] === 'Database') {
+                this.types = ['Container'];
+            }
         }
         this.path = target.context['@id'] || target.contextPath;
+        this.name = target.context['@name'] || target.contextPath.split('/').pop();
     }
 
     onSave(model: any) {

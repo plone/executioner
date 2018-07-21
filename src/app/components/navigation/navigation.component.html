@@ -9,7 +9,7 @@
 </div>
 
 <div class="list-container" *ngIf="!!contextChildren">
-    <g-toolbar [parentPath]="contextPath"></g-toolbar>
+    <g-toolbar [parentPath]="contextPath" [canAdd]="!isApplication"></g-toolbar>
     <ul>
         <li *ngFor="let item of contextChildren" [traverseTo]="item.path">
             {{item.title}}

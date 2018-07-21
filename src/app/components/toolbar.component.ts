@@ -9,6 +9,7 @@ import { Services } from '@plone/restapi-angular';
 export class ToolbarComponent {
     @Input() context: any;
     @Input() parentPath: string;
+    @Input() canAdd = true;
 
     constructor(private services: Services) {}
 

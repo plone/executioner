@@ -14,6 +14,7 @@ export class NavigationComponent extends TraversingComponent {
     context: any;
     contextPath: string;
     contextChildren: any[];
+    isApplication = false;
 
     constructor(
         public services: Services,
@@ -40,6 +41,7 @@ export class NavigationComponent extends TraversingComponent {
             }
 
             if (this.context['@type'] === 'Application') {
+                this.isApplication = true;
                 this.contextChildren = this.context.databases
                 .map(db => ({path: '/' + db, title: db}));
             } else if (this.context['@type'] === 'Database') {

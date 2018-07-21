@@ -1,4 +1,4 @@
-<pa-button icon="add" [traverseTo]="parentPath + '/@@add'"></pa-button>
+<pa-button *ngIf="canAdd" icon="add" [traverseTo]="parentPath + '/@@add'"></pa-button>
 
 <div class="selected-context" *ngIf="!!context">
     <pa-button color="secondary"
