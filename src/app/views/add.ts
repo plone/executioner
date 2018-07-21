@@ -9,7 +9,8 @@ export class GenericAddView extends AddView {
     onSave(model: any) {
         model['@type'] = this.type;
         this.services.resource.create(this.path, model).subscribe((res: any) => {
-            this.services.traverser.traverse(this.path + '/' + res['id']);
+            const path = res['@id'] ? res['@id'] : this.path + '/' + res['id'];
+            this.services.traverser.traverse(path);
         });
     }
 }
