@@ -4,8 +4,8 @@
         <h3>Enabled behaviors</h3>
         <ul>
             <li *ngFor="let behavior of behaviors">
-                <pa-button size="small" color="destructive" icon="delete" (click)="delete(behavior)"></pa-button>
                 {{ behavior }}
+                <pa-button size="small" color="destructive" icon="delete" (click)="delete(behavior)"></pa-button>
             </li>
         </ul>
     </div>
@@ -13,8 +13,8 @@
         <h3>Available behaviors</h3>
         <ul>
             <li *ngFor="let behavior of availableBehaviors">
-                <pa-button size="small" icon="add" (click)="add(behavior)"></pa-button>
                 {{ behavior }}
+                <pa-button size="small" icon="add" (click)="add(behavior)"></pa-button>
             </li>
         </ul>
     </div>
