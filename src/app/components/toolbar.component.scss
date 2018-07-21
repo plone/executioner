@@ -1,5 +1,7 @@
 .g-toolbar {
-    display: flex;
-    flex-direction: column;
     padding: 0 5px;
+
+    .selected-context {
+        float: right;
+    }
 }

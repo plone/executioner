@@ -1,12 +1,15 @@
 <div class="g-toolbar">
-    <pa-button
-    icon="add" [traverseTo]="parentPath + '/@@add'"></pa-button>
-    <pa-button color="secondary"
-    icon="pen" [traverseTo]="context['@id'] + '/@@edit'"></pa-button>
-    <pa-button color="secondary"
-    icon="share" [traverseTo]="context['@id'] + '/@@behaviors'"></pa-button>
-    <pa-button color="secondary"
-    icon="sharing" [traverseTo]="context['@id'] + '/@@sharing'"></pa-button>
-    <pa-button color="destructive"
-    icon="delete" (click)="delete()"></pa-button>
+    <pa-button icon="add" [traverseTo]="parentPath + '/@@add'"></pa-button>
+
+    <div class="selected-context" *ngIf="!!context">
+        <pa-button color="secondary"
+                   icon="pen" [traverseTo]="context['@id'] + '/@@edit'"></pa-button>
+        <pa-button color="secondary"
+                   icon="share" [traverseTo]="context['@id'] + '/@@behaviors'"></pa-button>
+        <pa-button color="secondary"
+                   icon="sharing" [traverseTo]="context['@id'] + '/@@sharing'"></pa-button>
+        <pa-button color="destructive"
+                   icon="delete" (click)="delete()"></pa-button>
+    </div>
 </div>
+

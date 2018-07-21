@@ -13,7 +13,6 @@
     ul {
         list-style: none;
         padding-left: 0;
-        width: 80%;
     }
     li {
         cursor: pointer;
@@ -27,14 +26,20 @@
 
         &.active {
             background: $sky;
+
+            &:hover {
+                background: $sky-dark;
+            }
         }
     }
 
     li:hover {
-        background: $azure-light;
+        background: $sky-light;
     }
 }
 
 .list-container {
-    display: flex;
+    g-toolbar {
+        position: sticky;
+    }
 }

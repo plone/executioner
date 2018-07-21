@@ -1,18 +1,18 @@
 <div class="list-container" *ngFor="let parent of parentList">
+    <g-toolbar [context]="parent.resource" [parentPath]="parent.parentPath"></g-toolbar>
     <ul>
         <li *ngFor="let item of parent.children" [traverseTo]="item.path"
             [class.active]="context['@id'].startsWith(item.path)">
             {{item.title}}
         </li>
     </ul>
-    <g-toolbar [context]="parent.resource" [parentPath]="parent.parentPath"></g-toolbar>
 </div>
 
 <div class="list-container" *ngIf="!!context && !!context.items">
+    <g-toolbar [context]="context"></g-toolbar>
     <ul>
         <li *ngFor="let item of context.items" [traverseTo]="item['@id']">
             {{item['@name']}}
         </li>
     </ul>
-    <g-toolbar [context]="context"></g-toolbar>
 </div>
