@@ -2,13 +2,17 @@
     {{ context['@type'] }}</pa-badge>
 <h2>{{ context['@name'] }}</h2>
 <div>
-    <legend>Title</legend> {{ context.title }}
+    <dt>Title</dt>
+    <dd>{{ context.title }}</dd>
+    <dt>UID</dt>
+    <dd>{{ context['@uid'] }}</dd>
     <h3>Behaviors</h3>
     <section *ngIf="behaviors">
         <ng-container *ngFor="let behavior of behaviors">
-            <h4>{{ behavior }}</h4>
+            <legend>{{ behavior }}</legend>
             <div class="behavior-item" *ngFor="let field of context[behavior] | keyvalue">
-                <legend>{{ field.key }}</legend> {{ field.value || '–' }}
+                <dt>{{ field.key }}</dt>
+                <dd>{{ field.value || '–' }}</dd>
             </div>
         </ng-container>
     </section>
