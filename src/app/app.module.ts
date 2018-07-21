@@ -14,6 +14,7 @@ import { ApplicationView } from './views/application';
 import { GenericView } from './views/view';
 import { GenericAddView } from './views/add';
 import { SharingView } from './views/sharing';
+import { EditView } from './views/edit';
 import { BehaviorsView } from './views/behaviors';
 import { ButtonModule, TextFieldModule, BadgeModule, ToasterModule } from 'pastanaga-angular';
 import { NavigationComponent } from './components/navigation/navigation.component';
@@ -35,6 +36,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         GenericAddView,
         NavigationComponent,
         SharingView,
+        EditView,
         BehaviorsView,
     ],
     imports: [
@@ -61,6 +63,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         GenericView,
         GenericAddView,
         SharingView,
+        EditView,
         BehaviorsView,
     ],
     providers: [

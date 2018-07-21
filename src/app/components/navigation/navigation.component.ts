@@ -28,6 +28,7 @@ export class NavigationComponent extends TraversingComponent {
         this.parentList = [];
         if (!!target.context) {
             this.contextPath = target.contextPath;
+            this.isApplication = this.context['@type'] === 'Application';
             const parentPath = this.getParentPath(target.context);
             if (parentPath) {
                 this.services.resource.get(parentPath).pipe(concatMap(parent => {
@@ -42,7 +43,6 @@ export class NavigationComponent extends TraversingComponent {
 
             this.contextChildren = null;
             if (this.context['@type'] === 'Application') {
-                this.isApplication = true;
                 this.contextChildren = this.context.databases
                 .map(db => ({path: '/' + db, title: db}));
             } else if (this.context['@type'] === 'Database') {
