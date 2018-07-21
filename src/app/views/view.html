@@ -1,20 +1,22 @@
+<pa-badge class="content-type" [isAccented]="true" hexaColor="#FF4400">{{ context['@type'] }}</pa-badge>
 <h2>{{ context.title }}</h2>
 <div *ngIf="context['@type'] === 'Container' || context['@type'] === 'Folder'">
-    <pa-select placeholder="Add new content…"
-        (selection)="addItem($event)" [options]="types">
+    <pa-select placeholder="Add new content…" (selection)="addItem($event)" [options]="types">
     </pa-select>
 </div>
-<div *ngIf="availableBehaviors">
-    <pa-select placeholder="Enable behavior…"
-        (selection)="addBehavior($event)" [options]="availableBehaviors">
-    </pa-select>
-</div>
-<div *ngIf="behaviors">
-    <section *ngFor="let behavior of behaviors">
-        <h3>{{ behavior }}</h3>
-        <div *ngFor="let field of context[behavior] | keyvalue">
-            <small>{{ field.key }}:</small> {{ field.value }}
-        </div>
+<div>
+    <h3>Behaviors</h3>
+    <div *ngIf="availableBehaviors">
+        <pa-select placeholder="Enable behavior…" (selection)="addBehavior($event)" [options]="availableBehaviors">
+        </pa-select>
+    </div>
+    <section *ngIf="availableBehaviors">
+        <ng-container *ngFor="let behavior of behaviors">
+            <h4>{{ behavior }}</h4>
+            <div *ngFor="let field of context[behavior] | keyvalue">
+                <legend>{{ field.key }}</legend> {{ field.value || '–' }}
+            </div>
+        </ng-container>
     </section>
 </div>
 <ul *ngIf="context.items">

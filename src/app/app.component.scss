@@ -1,9 +1,12 @@
+@import "./styles/variables";
+
 :host {
     display: block;
-    padding: 24px;
 
     header {
         position: relative;
+        background-color: $light-gray;
+        padding-left: 16px;
 
         a:focus, a:active {
             box-shadow: none;
@@ -15,7 +18,12 @@
 
         pa-button {
             position: absolute;
-            right: 0;
+            right: 7px;
+            top: 7px;
         }
+    }
+
+    main {
+        padding: 24px;
     }
 }

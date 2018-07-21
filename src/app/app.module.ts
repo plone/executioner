@@ -12,7 +12,7 @@ import { BasicAuthLoginComponent } from './views/login';
 import { DatabaseView } from './views/database';
 import { GenericView } from './views/view';
 import { GenericAddView } from './views/add';
-import { ButtonModule, TextFieldModule } from 'pastanaga-angular';
+import { ButtonModule, TextFieldModule, BadgeModule } from 'pastanaga-angular';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -42,6 +42,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         }),
         ButtonModule,
         TextFieldModule,
+        BadgeModule,
     ],
     entryComponents: [DatabaseView, GenericView, GenericAddView],
     providers: [

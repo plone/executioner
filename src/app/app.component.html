@@ -6,5 +6,7 @@
     <pa-button *ngIf="isAuthenticated" size="small" (click)="logout()">Logout</pa-button>
 </header>
 
-<traverser-outlet *ngIf="isAuthenticated"></traverser-outlet>
-<basic-auth-login *ngIf="!isAuthenticated"></basic-auth-login>
+<main>
+    <traverser-outlet *ngIf="isAuthenticated"></traverser-outlet>
+    <basic-auth-login *ngIf="!isAuthenticated"></basic-auth-login>
+</main>

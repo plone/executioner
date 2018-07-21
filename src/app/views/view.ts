@@ -5,6 +5,7 @@ import { Target } from 'angular-traversal';
 @Component({
     selector: 'generic-view',
     templateUrl: './view.html',
+    styleUrls: ['./view.scss'],
 })
 export class GenericView extends ViewView {
     availableBehaviors: {id: string, name: string}[];
