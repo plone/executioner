@@ -38,7 +38,7 @@ export class NavigationComponent extends TraversingComponent {
     }
 
     private loadParent(resource, currentPath): Observable<any> {
-        this.parentList.push(this.getChildren(resource, currentPath));
+        this.parentList.push({children: this.getChildren(resource, currentPath), path: currentPath});
         const parentPath = this.getParentPath(resource);
         if (parentPath) {
             return this.services.resource.get(parentPath).pipe(
