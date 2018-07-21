@@ -8,7 +8,7 @@
     margin-right: 24px;
     overflow-x: auto;
     grid-template-columns: repeat(var(--colNum), 300px);
-    grid-column-gap: 12px;
+    height: calc(100vh - 90px);
 
     ul {
         list-style: none;
@@ -39,7 +39,12 @@
 }
 
 .list-container {
+    overflow: auto;
+    border-right: 1px solid $azure-dark;
+    padding: 0 12px;
+
     g-toolbar {
         position: sticky;
+        top: 0;
     }
 }

@@ -1,4 +1,8 @@
-.g-toolbar {
+@import "../styles/variables";
+
+:host {
+    display: block;
+    background: $white-ghost;
     padding: 0 5px;
 
     .selected-context {

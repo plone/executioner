@@ -1,15 +1,23 @@
 @import "../styles/variables";
 
-.content-type {
-    float: right;
+:host {
+    display: block;
+    height: calc(100vh - 90px);
+    overflow-y: auto;
+
+    .content-type {
+        float: right;
+    }
+    h2 {
+        font-weight: $font-weight-bold;
+    }
+    h3 {
+        font-weight: $font-weight-regular;
+        padding-top: 8px;
+    }
+    .behavior-item {
+        margin-bottom: .75rem;
+    }
+
 }
-h2 {
-    font-weight: $font-weight-bold;
-}
-h3 {
-    font-weight: $font-weight-regular;
-    padding-top: 8px;
-}
-.behavior-item {
-    margin-bottom: .75rem;
-}
+
