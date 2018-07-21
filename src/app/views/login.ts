@@ -4,7 +4,7 @@ import { AdminService } from '../service';
 import { map, filter, tap } from 'rxjs/operators';
 
 @Component({
-    selector: 'basic-auth-login',
+    selector: 'g-basic-auth-login',
     templateUrl: './login.html',
     styleUrls: ['./login.scss'],
 })

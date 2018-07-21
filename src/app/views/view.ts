@@ -3,7 +3,7 @@ import { ViewView } from '@plone/restapi-angular';
 import { Target } from 'angular-traversal';
 
 @Component({
-    selector: 'generic-view',
+    selector: 'g-view',
     templateUrl: './view.html',
     styleUrls: ['./view.scss'],
 })

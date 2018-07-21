@@ -7,7 +7,7 @@ import { GenericAddView } from './views/add';
 import { concatMap, filter } from 'rxjs/operators';
 
 @Component({
-    selector: 'app-root',
+    selector: 'g-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
 })
