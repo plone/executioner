@@ -1,3 +1,5 @@
+@import "../../styles/variables";
+
 :host {
     // this variable defines the number of columns and will be changed dynamically by javascript
     --colNum: 1;
@@ -6,4 +8,29 @@
     margin-right: 24px;
     overflow-x: auto;
     grid-template-columns: repeat(var(--colNum), 300px);
+    grid-column-gap: 12px;
+
+    ul {
+        list-style: none;
+        padding-left: 0;
+    }
+    li {
+        cursor: pointer;
+        height: 30px;
+        line-height: 30px;
+        padding: 0 12px;
+
+        &:not(:last-child) {
+            border-bottom: 1px solid $azure-dark;
+        }
+
+        a {
+            color: $gray-blacky;
+            text-decoration: none;
+        }
+    }
+
+    li:hover {
+        background: $azure-light;
+    }
 }
