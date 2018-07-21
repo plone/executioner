@@ -8,6 +8,7 @@ import { GenericView } from './views/view';
 import { GenericAddView } from './views/add';
 import { SharingView } from './views/sharing';
 import { BehaviorsView } from './views/behaviors';
+import { EditView } from './views/edit';
 import { Toaster } from 'pastanaga-angular';
 
 @Component({
@@ -30,6 +31,7 @@ export class AppComponent implements OnInit {
         this.traverser.addView('view', 'Database', DatabaseView);
         this.traverser.addView('view', '*', GenericView);
         this.traverser.addView('add', '*', GenericAddView);
+        this.traverser.addView('edit', '*', EditView);
         this.traverser.addView('sharing', '*', SharingView);
         this.traverser.addView('behaviors', '*', BehaviorsView);
 
