@@ -1,0 +1,9 @@
+:host {
+    // this variable defines the number of columns and will be changed dynamically by javascript
+    --colNum: 1;
+
+    display: grid;
+    margin-right: 24px;
+    overflow-x: auto;
+    grid-template-columns: repeat(var(--colNum), 300px);
+}

@@ -13,6 +13,7 @@ import { DatabaseView } from './views/database';
 import { GenericView } from './views/view';
 import { GenericAddView } from './views/add';
 import { ButtonModule, TextFieldModule, BadgeModule } from 'pastanaga-angular';
+import { NavigationComponent } from './components/navigation/navigation.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -26,6 +27,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         DatabaseView,
         GenericView,
         GenericAddView,
+        NavigationComponent,
     ],
     imports: [
         BrowserModule,

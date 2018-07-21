@@ -1,0 +1,15 @@
+<div class="list-container" *ngFor="let parent of parentList">
+    <ul>
+        <li *ngFor="let item of parent.items">
+            <a href="#" [traverseTo]="item['@id']">{{item['@name']}}</a>
+        </li>
+    </ul>
+</div>
+
+<div class="list-container" *ngIf="!!context && !!context.items">
+    <ul>
+        <li *ngFor="let item of context.items">
+            <a href="#" [traverseTo]="item['@id']">{{item['@name']}}</a>
+        </li>
+    </ul>
+</div>

@@ -7,6 +7,12 @@
 </header>
 
 <main>
-    <traverser-outlet *ngIf="isAuthenticated"></traverser-outlet>
+    <div class="grid-container" *ngIf="isAuthenticated">
+        <g-navigation></g-navigation>
+        <div class="view">
+            <traverser-outlet></traverser-outlet>
+        </div>
+    </div>
+
     <g-basic-auth-login *ngIf="!isAuthenticated"></g-basic-auth-login>
 </main>
