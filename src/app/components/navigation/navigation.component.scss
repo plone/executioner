@@ -7,3 +7,7 @@
     overflow-x: auto;
     grid-template-columns: repeat(var(--colNum), 300px);
 }
+
+.list-container {
+    display: flex;
+}

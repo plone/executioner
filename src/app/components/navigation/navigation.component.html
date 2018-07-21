@@ -1,9 +1,10 @@
 <div class="list-container" *ngFor="let parent of parentList">
     <ul>
-        <li *ngFor="let item of parent.items">
-            <a href="#" [traverseTo]="item['@id']">{{item['@name']}}</a>
+        <li *ngFor="let item of parent">
+            <a href="#" [traverseTo]="item.path">{{item.title}}</a>
         </li>
     </ul>
+    <g-toolbar [context]="context"></g-toolbar>
 </div>
 
 <div class="list-container" *ngIf="!!context && !!context.items">
@@ -12,4 +13,5 @@
             <a href="#" [traverseTo]="item['@id']">{{item['@name']}}</a>
         </li>
     </ul>
+    <g-toolbar [context]="context"></g-toolbar>
 </div>
