@@ -13,6 +13,6 @@
         <pa-input name="title" ngModel>Title</pa-input>
 
         <pa-button (click)="onCancel()" color="secondary" size="small">Cancel</pa-button>
-        <pa-button type="submit"  border size="small">Save</pa-button>
+        <pa-button (click)="onSave(f.value)" border size="small">Save</pa-button>
     </form>
 </ng-container>
