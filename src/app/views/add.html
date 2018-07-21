@@ -2,7 +2,7 @@
     <h2>Add new content in {{ name }}</h2>
     <ul>
         <li *ngFor="let type of types">
-            <pa-button border [traverseTo]="path +'/@@add?type=' + type">{{ type }}</pa-button>
+            <a [traverseTo]="path +'/@@add?type=' + type">{{ type }}</a>
         </li>
     </ul>
 </ng-container>
