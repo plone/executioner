@@ -40,6 +40,7 @@ export class NavigationComponent extends TraversingComponent {
                 });
             }
 
+            this.contextChildren = null;
             if (this.context['@type'] === 'Application') {
                 this.isApplication = true;
                 this.contextChildren = this.context.databases
