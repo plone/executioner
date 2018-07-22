@@ -6,18 +6,18 @@ import { take } from 'rxjs-compat/operator/take';
 @Injectable()
 export class AdminService {
 
-    constructor(public services: Services) {
-
-    }
+    constructor(public services: Services) {}
 
     doLogin(login: string, password: string) {
-        // Database object does not provide JWT, we use basic auth
-        this.services.authentication.setBasicCredentials(login, password);
-        // as soon we enter a richer object, we perform the JWT auth
+        // Application or Database objects do not provide JWT, we use basic auth at first
+        this.services.authentication.setBasicCredentials(login, password, true);
+        // as soon as we traverse in a richer object, we try JWT auth
         this.services.traverser.target.pipe(
-            filter(target => target.context['@type'] && target.context['@type'] !== 'Database'),
+            filter(target => target.context['@type'] &&
+                ['Database', 'Application'].indexOf(target.context['@type']) === -1),
             concatMap(target => this.services.authentication.login(login, password, target.contextPath))
-        ).take(1).subscribe();
+        )
+        .take(1).subscribe();
         this.services.traverser.traverse(this.services.traverser.target.getValue().contextPath);
     }
 

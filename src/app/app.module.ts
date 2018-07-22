@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../environments/environment';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { RESTAPIModule } from '@plone/restapi-angular';
@@ -71,7 +72,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         {
             provide: 'CONFIGURATION',
             useValue: {
-                BACKEND_URL: 'http://127.0.0.1:8080',
+                BACKEND_URL: environment.backend,
                 CLIENT_TIMEOUT: 5000,
             },
         },
