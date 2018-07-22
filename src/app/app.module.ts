@@ -19,7 +19,7 @@ import { EditView } from './views/edit';
 import { BehaviorsView } from './views/behaviors';
 import { ButtonModule, TextFieldModule, BadgeModule, ToasterModule } from 'pastanaga-angular';
 import { NavigationComponent } from './components/navigation/navigation.component';
-import { ToolbarComponent } from './components/toolbar.component';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { ContainerView } from './views/container';
 import { AddonsView } from './views/addons';
 
