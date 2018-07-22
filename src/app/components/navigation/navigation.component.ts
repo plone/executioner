@@ -80,11 +80,14 @@ export class NavigationComponent extends TraversingComponent {
     }
 
     private getChildren(resource, currentPath): {path: string, title: string}[] {
+        let children: {path: string, title: string}[];
         if (resource.items) {
-            return resource.items.map(item => ({path: item['@id'], title: item['@name']}));
+            children = resource.items.map(item => ({path: item['@id'], title: item['@name']}));
         } else if (resource.containers) {
-            return resource.containers.map(item => ({path: `${currentPath}/${item}`, title: item}));
+            children = resource.containers.map(item => ({path: `${currentPath}/${item}`, title: item}));
         }
+        children.sort((a, b) => a.title < b.title ? -1 : 1);
+        return children;
     }
 
     private scrollRight() {
