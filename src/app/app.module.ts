@@ -20,6 +20,8 @@ import { BehaviorsView } from './views/behaviors';
 import { ButtonModule, TextFieldModule, BadgeModule, ToasterModule } from 'pastanaga-angular';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { ToolbarComponent } from './components/toolbar.component';
+import { ContainerView } from './views/container';
+import { AddonsView } from './views/addons';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -35,10 +37,12 @@ export function HttpLoaderFactory(http: HttpClient) {
         ApplicationView,
         GenericView,
         GenericAddView,
+        ContainerView,
         NavigationComponent,
         SharingView,
         EditView,
         BehaviorsView,
+        AddonsView,
     ],
     imports: [
         BrowserModule,
@@ -62,10 +66,12 @@ export function HttpLoaderFactory(http: HttpClient) {
         ApplicationView,
         DatabaseView,
         GenericView,
+        ContainerView,
         GenericAddView,
         SharingView,
         EditView,
         BehaviorsView,
+        AddonsView,
     ],
     providers: [
         AdminService,

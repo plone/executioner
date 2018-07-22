@@ -1,0 +1,31 @@
+<h2>{{ context.title }} addons</h2>
+<div class="addons-container">
+    <div class="addon-list">
+        <h3>Installed addons</h3>
+        <ng-container *ngIf="!!addons && addons.length > 0">
+            <ul>
+                <li *ngFor="let addon of addons">
+                    {{ addon }}
+                    <!--<pa-button size="small" color="destructive" icon="delete" (click)="delete(addon)"></pa-button>-->
+                </li>
+            </ul>
+        </ng-container>
+        <ng-container *ngIf="!addons || !addons.length">
+            No addon installed
+        </ng-container>
+    </div>
+    <div class="addon-list">
+        <h3>Available addons</h3>
+        <ng-container *ngIf="!!availableAddons && availableAddons.length > 0">
+            <ul>
+                <li *ngFor="let addon of availableAddons">
+                    {{ addon.title }}
+                    <pa-button size="small" icon="add" (click)="add(addon.id)"></pa-button>
+                </li>
+            </ul>
+        </ng-container>
+        <ng-container *ngIf="!availableAddons || !availableAddons.length">
+            No addon available
+        </ng-container>
+    </div>
+</div>

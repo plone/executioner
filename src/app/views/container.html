@@ -1,0 +1,42 @@
+<pa-badge class="content-type" hexaColor="#FF4400">{{ context['@type'] }}</pa-badge>
+<h2>{{ context['@name'] }}</h2>
+<div>
+    <dt>Title</dt>
+    <dd>{{ context.title }}</dd>
+    <dt>UID</dt>
+    <dd>{{ context['@uid'] }}</dd>
+    <h3>
+        Behaviors
+        <pa-button color="secondary" icon="properties" [traverseTo]="context['@id'] + '/@@behaviors'"></pa-button>
+    </h3>
+    <section>
+        <ng-container *ngIf="!!behaviors">
+            <ng-container *ngFor="let behavior of behaviors">
+                <h4>{{ behavior }}</h4>
+                <div class="behavior-item" *ngFor="let field of context[behavior] | keyvalue">
+                    <dt>{{ field.key }}</dt>
+                    <dd>{{ field.value || '–' }}</dd>
+                </div>
+            </ng-container>
+        </ng-container>
+        <ng-container *ngIf="!behaviors">
+            No behavior enabled
+        </ng-container>
+    </section>
+
+    <h3>
+        Addons
+        <pa-button color="secondary" icon="add-on" [traverseTo]="context['@id'] + '/@@addons'"></pa-button>
+    </h3>
+    <section>
+        <ng-container *ngIf="!!addons">
+            <ul>
+                <li *ngFor="let addon of addons">{{addon.title}}</li>
+            </ul>
+        </ng-container>
+        <ng-container *ngIf="!addons">
+            No addon installed
+        </ng-container>
+    </section>
+</div>
+

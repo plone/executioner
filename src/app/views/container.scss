@@ -1,0 +1,13 @@
+@import "../styles/variables";
+
+:host {
+    section {
+        margin-bottom: 24px;
+    }
+
+    h4 {
+        background: $white-ghost;
+        height: 30px;
+        line-height: 30px;
+    }
+}

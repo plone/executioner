@@ -10,6 +10,8 @@ import { SharingView } from './views/sharing';
 import { BehaviorsView } from './views/behaviors';
 import { EditView } from './views/edit';
 import { Toaster } from 'pastanaga-angular';
+import { ContainerView } from './views/container';
+import { AddonsView } from './views/addons';
 
 @Component({
     selector: 'g-root',
@@ -29,11 +31,13 @@ export class AppComponent implements OnInit {
         this.views.initialize();
         this.traverser.addView('view', 'Application', ApplicationView);
         this.traverser.addView('view', 'Database', DatabaseView);
+        this.traverser.addView('view', 'Container', ContainerView);
         this.traverser.addView('view', '*', GenericView);
         this.traverser.addView('add', '*', GenericAddView);
         this.traverser.addView('edit', '*', EditView);
         this.traverser.addView('sharing', '*', SharingView);
         this.traverser.addView('behaviors', '*', BehaviorsView);
+        this.traverser.addView('addons', '*', AddonsView);
 
         this.services.authentication.isAuthenticated.subscribe(auth => this.isAuthenticated = auth.state);
 

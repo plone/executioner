@@ -1,0 +1,26 @@
+@import "../styles/variables";
+
+.addon-list {
+    margin-bottom: 24px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    height: 36px;
+    line-height: 30px;
+    padding: 3px 0;
+    position: relative;
+
+    &:not(:last-child) {
+        border-bottom: 1px solid $azure-dark;
+    }
+    pa-button {
+        position: absolute;
+        right: 0;
+        bottom: 3px;
+    }
+}
