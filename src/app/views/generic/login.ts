@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginInfo, LoginView, Services } from '@plone/restapi-angular';
-import { AdminService } from '../service';
+import { AdminService } from '../../service';
 import { map, filter, tap } from 'rxjs/operators';
 
 @Component({

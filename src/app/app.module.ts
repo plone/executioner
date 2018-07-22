@@ -9,19 +9,19 @@ import { RESTAPIModule } from '@plone/restapi-angular';
 import { TraversalModule } from 'angular-traversal';
 import { AdminService } from './service';
 import { AppComponent } from './app.component';
-import { BasicAuthLoginComponent } from './views/login';
-import { DatabaseView } from './views/database';
-import { ApplicationView } from './views/application';
-import { GenericView } from './views/view';
-import { GenericAddView } from './views/add';
-import { SharingView } from './views/sharing';
-import { EditView } from './views/edit';
-import { BehaviorsView } from './views/behaviors';
+import { BasicAuthLoginComponent } from './views/generic/login';
+import { DatabaseView } from './views/database/database';
+import { ApplicationView } from './views/application/application';
+import { GenericView } from './views/generic/view';
+import { GenericAddView } from './views/generic/add';
+import { SharingView } from './views/generic/sharing';
+import { EditView } from './views/generic/edit';
+import { BehaviorsView } from './views/generic/behaviors';
+import { ContainerView } from './views/container/container';
+import { AddonsView } from './views/container/addons';
 import { ButtonModule, TextFieldModule, BadgeModule, ToasterModule } from 'pastanaga-angular';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { ContainerView } from './views/container';
-import { AddonsView } from './views/addons';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {

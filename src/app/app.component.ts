@@ -2,16 +2,16 @@ import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { concatMap, filter } from 'rxjs/operators';
 import { Traverser } from 'angular-traversal';
 import { PloneViews, Services } from '@plone/restapi-angular';
-import { DatabaseView } from './views/database';
-import { ApplicationView } from './views/application';
-import { GenericView } from './views/view';
-import { GenericAddView } from './views/add';
-import { SharingView } from './views/sharing';
-import { BehaviorsView } from './views/behaviors';
-import { EditView } from './views/edit';
+import { DatabaseView } from './views/database/database';
+import { ApplicationView } from './views/application/application';
+import { GenericView } from './views/generic/view';
+import { GenericAddView } from './views/generic/add';
+import { SharingView } from './views/generic/sharing';
+import { BehaviorsView } from './views/generic/behaviors';
+import { EditView } from './views/generic/edit';
 import { Toaster } from 'pastanaga-angular';
-import { ContainerView } from './views/container';
-import { AddonsView } from './views/addons';
+import { ContainerView } from './views/container/container';
+import { AddonsView } from './views/container/addons';
 
 @Component({
     selector: 'g-root',
