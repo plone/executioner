@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TraversingComponent, Services } from '@plone/restapi-angular';
+import { Toaster } from 'pastanaga-angular';
 
 @Component({
     selector: 'g-behaviors-view',
@@ -10,7 +11,7 @@ export class BehaviorsView extends TraversingComponent {
     availableBehaviors: string[];
     behaviors: string[];
 
-    constructor(services: Services) {
+    constructor(services: Services, private toaster: Toaster) {
         super(services);
     }
 
@@ -32,14 +33,20 @@ export class BehaviorsView extends TraversingComponent {
     add(behavior: string) {
         const path = this.context['@id'];
         this.services.resource.addBehavior(path, behavior)
-        .subscribe(() => this.services.traverser.traverse(path + '/@@behaviors'));
+        .subscribe(
+            () => this.services.traverser.traverse(path + '/@@behaviors'),
+            () => this.toaster.open('Error when adding the behaviors')
+        );
     }
 
     delete(behavior: string) {
         if (confirm('Remove ' + behavior)) {
             const path = this.context['@id'];
             this.services.resource.deleteBehavior(path, behavior)
-            .subscribe(() => this.services.traverser.traverse(path + '/@@behaviors'));
+            .subscribe(
+                () => this.services.traverser.traverse(path + '/@@behaviors'),
+                () => this.toaster.open('Error when deleting the behaviors')
+            );
         }
     }
 }

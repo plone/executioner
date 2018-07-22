@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TraversingComponent, Services } from '@plone/restapi-angular';
 import { forkJoin } from 'rxjs';
+import { Toaster } from 'pastanaga-angular';
 
 @Component({
     selector: 'g-addons-view',
@@ -11,7 +12,7 @@ export class AddonsView extends TraversingComponent {
     availableAddons: {id: string, title: string}[];
     addons: string[];
 
-    constructor(services: Services) {
+    constructor(services: Services, private toaster: Toaster) {
         super(services);
     }
 
@@ -35,15 +36,20 @@ export class AddonsView extends TraversingComponent {
     add(addon: string) {
         const path = this.context['@id'];
         this.services.resource.addAddon(path, addon)
-        .subscribe(() => this.services.traverser.traverse(path + '/@@addons'));
+        .subscribe(
+            () => this.services.traverser.traverse(path + '/@@addons'),
+            () => this.toaster.open('Error when adding the add-on')
+        );
     }
 
     delete(addon: string) {
-        // TODO: add deletion method when fixed on guillotina
-        // if (confirm('Remove ' + addon)) {
-        //     const path = this.context['@id'];
-        //     this.services.resource.deleteAddon(path, addon)
-        //     .subscribe(() => this.services.traverser.traverse(path + '/@@addons'));
-        // }
+        if (confirm('Remove ' + addon)) {
+            const path = this.context['@id'];
+            this.services.resource.deleteAddon(path, addon)
+            .subscribe(
+                () => this.services.traverser.traverse(path + '/@@addons'),
+                () => this.toaster.open('Error when deleting the add-on')
+            );
+        }
     }
 }
