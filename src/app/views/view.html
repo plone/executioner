@@ -6,14 +6,22 @@
     <dd>{{ context.title }}</dd>
     <dt>UID</dt>
     <dd>{{ context['@uid'] }}</dd>
-    <h3>Behaviors</h3>
-    <section *ngIf="behaviors">
-        <ng-container *ngFor="let behavior of behaviors">
-            <legend>{{ behavior }}</legend>
-            <div class="behavior-item" *ngFor="let field of context[behavior] | keyvalue">
-                <dt>{{ field.key }}</dt>
-                <dd>{{ field.value || '–' }}</dd>
-            </div>
+    <h3>
+        Behaviors
+        <pa-button color="secondary" icon="properties" [traverseTo]="context['@id'] + '/@@behaviors'"></pa-button>
+    </h3>
+    <section>
+        <ng-container *ngIf="!!behaviors">
+            <ng-container *ngFor="let behavior of behaviors">
+                <h4>{{ behavior }}</h4>
+                <div class="behavior-item" *ngFor="let field of context[behavior] | keyvalue">
+                    <dt>{{ field.key }}</dt>
+                    <dd>{{ field.value || '–' }}</dd>
+                </div>
+            </ng-container>
+        </ng-container>
+        <ng-container *ngIf="!behaviors">
+            No behavior enabled
         </ng-container>
     </section>
 </div>

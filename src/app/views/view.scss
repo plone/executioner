@@ -1,9 +1,18 @@
 @import "../styles/variables";
 
 :host {
-
     .behavior-item {
         margin-bottom: .75rem;
+    }
+
+    section {
+        margin-bottom: 24px;
+    }
+
+    h4 {
+        background: $white-ghost;
+        height: 30px;
+        line-height: 30px;
     }
 }
 
