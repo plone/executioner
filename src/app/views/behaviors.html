@@ -2,20 +2,30 @@
 <div class="behaviors-container">
     <div>
         <h3>Enabled behaviors</h3>
-        <ul>
-            <li *ngFor="let behavior of behaviors">
-                {{ behavior }}
-                <pa-button size="small" color="destructive" icon="delete" (click)="delete(behavior)"></pa-button>
-            </li>
-        </ul>
+        <ng-container *ngIf="!!behaviors && behaviors.length > 0">
+            <ul>
+                <li *ngFor="let behavior of behaviors">
+                    {{ behavior }}
+                    <pa-button size="small" color="destructive" icon="delete" (click)="delete(behavior)"></pa-button>
+                </li>
+            </ul>
+        </ng-container>
+        <ng-container *ngIf="!behaviors || behaviors.length === 0">
+            No behavior enabled
+        </ng-container>
     </div>
     <div>
         <h3>Available behaviors</h3>
-        <ul>
-            <li *ngFor="let behavior of availableBehaviors">
-                {{ behavior }}
-                <pa-button size="small" icon="add" (click)="add(behavior)"></pa-button>
-            </li>
-        </ul>
+        <ng-container *ngIf="!!availableBehaviors && availableBehaviors.length > 0">
+            <ul>
+                <li *ngFor="let behavior of availableBehaviors">
+                    {{ behavior }}
+                    <pa-button size="small" icon="add" (click)="add(behavior)"></pa-button>
+                </li>
+            </ul>
+        </ng-container>
+        <ng-container *ngIf="!availableBehaviors || availableBehaviors.length === 0">
+            No behavior available
+        </ng-container>
     </div>
 </div>
