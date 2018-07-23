@@ -1,0 +1,28 @@
+<h2>{{ context.title }} registry</h2>
+<form *ngIf="!currentEntry" #f="ngForm" (submit)="save(newEntry)">
+    <pa-input name="key" [(ngModel)]="newEntry.key"
+    placeholder="Enter a valid interface dotted name">Key</pa-input>
+    <pa-textarea name="value" [(value)]="newEntry.value"
+    placeholder="Enter a valid JSON value">Value</pa-textarea>
+    <pa-button (click)="save(newEntry)" border size="small">Add</pa-button>
+</form>
+<ng-container *ngIf="currentEntry">
+    <h3>Modify {{ currentEntry.key }} value</h3>
+    <form #f="ngForm" (submit)="save(currentEntry)">
+        <pa-textarea [(value)]="currentEntry.value"
+        placeholder="Enter a valid JSON value">Value</pa-textarea>
+        <pa-button (click)="cancel()" color="secondary" border size="small">Cancel</pa-button>
+        <pa-button (click)="save(currentEntry)" border size="small">Save</pa-button>
+    </form>
+</ng-container>
+<ng-container *ngIf="!!entries && entries.length > 0 && !currentEntry">
+    <ul>
+        <li *ngFor="let entry of entries">
+            {{ entry.key }}
+            <pa-button size="small" icon="pen" (click)="edit(entry.key)"></pa-button>
+        </li>
+    </ul>
+</ng-container>
+<ng-container *ngIf="!entries || !entries.length">
+    No registry entry
+</ng-container>

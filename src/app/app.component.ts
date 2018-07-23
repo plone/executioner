@@ -12,6 +12,7 @@ import { EditView } from './views/generic/edit';
 import { Toaster } from 'pastanaga-angular';
 import { ContainerView } from './views/container/container';
 import { AddonsView } from './views/container/addons';
+import { RegistryView } from './views/container/registry';
 
 @Component({
     selector: 'g-root',
@@ -38,6 +39,7 @@ export class AppComponent implements OnInit {
         this.traverser.addView('sharing', '*', SharingView);
         this.traverser.addView('behaviors', '*', BehaviorsView);
         this.traverser.addView('addons', '*', AddonsView);
+        this.traverser.addView('registry', '*', RegistryView);
 
         this.services.authentication.isAuthenticated.subscribe(auth => this.isAuthenticated = auth.state);
 
