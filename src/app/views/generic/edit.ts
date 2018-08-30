@@ -7,21 +7,31 @@ import { Toaster } from 'pastanaga-angular';
     templateUrl: './edit.html',
 })
 export class EditView extends TraversingComponent {
-    model: any;
+    json: string;
+    error = false;
 
     constructor(services: Services, private toaster: Toaster) {
         super(services);
     }
 
     update(value) {
-        this.model = value;
+        this.json = value;
     }
 
     save() {
-        this.services.resource.update(this.context['@id'], this.model)
-        .subscribe(
-            () => this.toaster.open('Updated'),
-            () => this.toaster.open('Error when updating'),
-        );
+        let model: any;
+        try {
+            model = JSON.parse(this.json);
+            this.error = false;
+        } catch (SyntaxError) {
+            this.error = true;
+        }
+        if (!this.error) {
+            this.services.resource.save(this.context['@id'], model)
+            .subscribe(
+                () => this.toaster.open('Updated'),
+                () => this.toaster.open('Error when updating'),
+            );
+        }
     }
 }
