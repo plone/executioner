@@ -1,3 +1,4 @@
 <h2>Edit</h2>
-<pa-textarea (keyUp)="update($event)" [value]="context | json">Model</pa-textarea>
+<pa-textarea (keyUp)="update($event)" [value]="context | json"
+[errorHelp]="error && 'Syntax error'">Model</pa-textarea>
 <pa-button border (click)="save()">Save</pa-button>
