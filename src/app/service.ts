@@ -18,7 +18,7 @@ export class AdminService {
             concatMap(target => this.services.authentication.login(login, password, target.contextPath))
         )
         .take(1).subscribe();
-        this.services.traverser.traverse(this.services.traverser.target.getValue().contextPath);
+        this.services.traverser.traverseHere();
     }
 
 
