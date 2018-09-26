@@ -7,6 +7,16 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { RESTAPIModule } from '@plone/restapi-angular';
 import { TraversalModule } from 'angular-traversal';
+import {
+    SchemaFormModule,
+    WidgetRegistry,
+    SchemaValidatorFactory,
+    ZSchemaValidatorFactory,
+} from 'ngx-schema-form';
+import {
+    NsfPastanagaModule,
+    PastanagaWidgetRegistry,
+} from 'nsf-pastanaga';
 import { AdminService } from './service';
 import { AppComponent } from './app.component';
 import { BasicAuthLoginComponent } from './views/generic/login';
@@ -50,6 +60,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         BrowserModule,
         RESTAPIModule,
         FormsModule,
+        SchemaFormModule,
+        NsfPastanagaModule,
         TraversalModule,
 
         TranslateModule.forRoot({
@@ -84,6 +96,11 @@ export function HttpLoaderFactory(http: HttpClient) {
                 BACKEND_URL: environment.backend,
                 CLIENT_TIMEOUT: 5000,
             },
+        },
+        { provide: WidgetRegistry, useClass: PastanagaWidgetRegistry },
+        {
+            provide: SchemaValidatorFactory,
+            useClass: ZSchemaValidatorFactory,
         },
     ],
     bootstrap: [AppComponent],
