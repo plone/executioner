@@ -24,6 +24,7 @@ export class EditView extends Base {
     schema: any;
     editModel: any;
     useSchemaForm = true;
+    richTextFields: string[] = [];
 
     constructor(services: Services, private toaster: Toaster) {
         super(services);
@@ -63,7 +64,7 @@ export class EditView extends Base {
             return;
         }
         Object.keys(schema.properties).forEach(prop => {
-            if (!schema.properties[prop] || prop.startsWith('__') || FIELDS_EXCLUDE.includes(prop)) {
+            if (!schema.properties[prop] || prop.startsWith('__') || FIELDS_EXCLUDE.includes(prop) || schema.properties[prop].readonly) {
                 delete schema.properties[prop];
                 return;
             }
@@ -85,6 +86,7 @@ export class EditView extends Base {
                 schema.properties[prop].widget === 'richtext'
                 || schema.properties[prop].widget.id === 'richtext')) {
                 schema.properties[prop].type = 'string';
+                this.richTextFields.push(prop);
                 delete schema.properties[prop].fieldsets;
                 delete schema.properties[prop].properties;
             }
@@ -119,7 +121,11 @@ export class EditView extends Base {
         Object.keys(model).forEach(key => {
             if (key.includes('.')) {
                 Object.keys(model[key]).forEach(subKey => {
-                    model[key + '.' + subKey] = model[key][subKey];
+                    const flatKey = key + '.' + subKey;
+                    model[flatKey] = model[key][subKey];
+                    if (this.richTextFields.includes(flatKey) && model[flatKey].data) {
+                        model[flatKey] = model[flatKey].data;
+                    }
                 });
                 delete model[key];
             }
@@ -129,6 +135,13 @@ export class EditView extends Base {
 
     updateModel(model: any, flatModel: any): any {
         Object.keys(flatModel).forEach(key => {
+            if (this.richTextFields.includes(key)) {
+                flatModel[key] = {
+                    content_type: 'text/html',
+                    encoding: 'utf-8',
+                    data: flatModel[key],
+                };
+            }
             if (key.includes('.')) {
                 const behavior = key.split('.').slice(0, -1).join('.');
                 const subKey = key.split('.').slice(-1)[0];
@@ -137,6 +150,7 @@ export class EditView extends Base {
                 model[key] = flatModel[key];
             }
         });
+
         return model;
     }
 

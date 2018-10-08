@@ -18,7 +18,7 @@
     "ngx-schema-form": {
         "path": "/projects/schema-form/src/lib",
         "url": "git@github.com:makinacorpus/ngx-schema-form.git",
-        "branch": "issue-233"
+        "branch": "master"
     },
     "nsf-pastanaga": {
         "path": "/projects/pastanaga/src/lib",
