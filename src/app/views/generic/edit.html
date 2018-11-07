@@ -1,4 +1,16 @@
-<h2>Edit</h2>
-<pa-textarea (keyUp)="update($event)" [value]="context | json"
-[errorHelp]="error && 'Syntax error'">Model</pa-textarea>
-<pa-button border (click)="save()">Save</pa-button>
+<div class="title-container">
+    <h2>Edit</h2>
+    <pa-button icon="blog-entry" (click)="toggleMode()" color="secondary"
+        [border]="useSchemaForm" size="small">Form editor</pa-button>
+    <pa-button icon="rename" (click)="toggleMode()" color="secondary"
+        [border]="!useSchemaForm" size="small">JSON editor</pa-button>
+</div>
+<div class="edit-form">
+    <sf-form *ngIf="useSchemaForm" [schema]="schema" [(model)]="editModel"></sf-form>
+    <pa-textarea *ngIf="!useSchemaForm" (keyUp)="update($event)" [value]="context | json"
+    [errorHelp]="error && 'Syntax error'">Model</pa-textarea>
+</div>
+<div class="bottom-bar">
+    <pa-button border (click)="save()">Save</pa-button>
+</div>
+
