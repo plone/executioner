@@ -1,12 +1,10 @@
-<pa-button *ngIf="canAdd" icon="add" [traverseTo]="parentPath + '/@@add'"></pa-button>
+<pa-button *ngIf="canAdd" icon="add" paTooltip="Add" [traverseTo]="parentPath + '/@@add'"></pa-button>
+<pa-button *ngIf="canPaste" paTooltip="Paste" icon="paste" (click)="paste()"></pa-button>
 
 <div class="selected-context" *ngIf="!!context">
-    <pa-button color="secondary"
-               icon="pen" [traverseTo]="context['@id'] + '/@@edit'"></pa-button>
-    <pa-button color="secondary"
-               icon="properties" [traverseTo]="context['@id'] + '/@@behaviors'"></pa-button>
-    <pa-button color="secondary"
-               icon="sharing" [traverseTo]="context['@id'] + '/@@sharing'"></pa-button>
-    <pa-button color="destructive"
-               icon="delete" (click)="delete()"></pa-button>
+    <pa-button color="secondary" paTooltip="Edit" icon="pen" [traverseTo]="context['@id'] + '/@@edit'"></pa-button>
+    <pa-button color="secondary" paTooltip="Copy" icon="copy" (click)="copy()"></pa-button>
+    <pa-button color="secondary" paTooltip="Behaviors" icon="properties" [traverseTo]="context['@id'] + '/@@behaviors'"></pa-button>
+    <pa-button color="secondary" paTooltip="Sharing" icon="sharing" [traverseTo]="context['@id'] + '/@@sharing'"></pa-button>
+    <pa-button color="destructive" paTooltip="Delete" icon="delete" (click)="delete()"></pa-button>
 </div>

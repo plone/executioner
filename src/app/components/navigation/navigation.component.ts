@@ -21,6 +21,10 @@ export class NavigationComponent extends TraversingComponent {
         private elementRef: ElementRef,
     ) {
         super(services);
+
+        this.services.resource.resourceModified.subscribe(() => {
+            this.services.traverser.traverseHere();
+        });
     }
 
     onTraverse(target: Target) {

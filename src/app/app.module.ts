@@ -30,7 +30,7 @@ import { BehaviorsView } from './views/generic/behaviors';
 import { ContainerView } from './views/container/container';
 import { AddonsView } from './views/container/addons';
 import { RegistryView } from './views/container/registry';
-import { ButtonModule, TextFieldModule, BadgeModule, ToasterModule } from 'pastanaga-angular';
+import { ButtonModule, TextFieldModule, BadgeModule, ToasterModule, TooltipModule } from 'pastanaga-angular';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 
@@ -75,6 +75,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         TextFieldModule,
         BadgeModule,
         ToasterModule.forRoot(),
+        TooltipModule,
     ],
     entryComponents: [
         ApplicationView,
