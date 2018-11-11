@@ -1,10 +1,10 @@
 <form #form="ngForm" (ngSubmit)="onSubmit(form.value)">
     <p class="error" *ngIf="error">{{ error }}</p>
 
-    <pa-input name="login" [isDisabled]="isPending" ngModel>Username</pa-input>
-    <pa-input type="password" name="password" [isDisabled]="isPending" ngModel>Password</pa-input>
+    <pa-input name="login" required [isDisabled]="isPending" ngModel>Username</pa-input>
+    <pa-input type="password" required name="password" [isDisabled]="isPending" ngModel>Password</pa-input>
 
     <footer>
-        <pa-button border type="submit" [disabled]="isPending">{{isPending ? 'Loading…' : 'Login'}}</pa-button>
+        <pa-button border type="submit" [disabled]="isPending || !form.form.valid">{{isPending ? 'Loading…' : 'Login'}}</pa-button>
     </footer>
 </form>
