@@ -2,11 +2,11 @@
 
 The Executioner is a simple web user interface to navigate into a Guillotina server, providing full CRUD features on any Guillotina content.
 
-It can ba accessed on any Guillotina install at http://locahost:8080/+admin/.
+It can be accessed on any Guillotina install at http://locahost:8080/+admin/.
 
 ## Development
 
-Install:
+### Install
 
 ```
 npm install -g mr-developer
@@ -14,8 +14,15 @@ npm install
 mrdeveloper
 ```
 
-Run: (make sure to have a Guillotina server running on http://localhost:8080)
+### Run
 
+Launch guillotina (make sure to have docker running).
+```bash
+docker-compose -f ./g-api/docker-compose-local.yml up
+```
+It will run on http://localhost:8081
+
+Then run the executioner:
 ```
 npm start
 ```

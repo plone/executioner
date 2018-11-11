@@ -13,7 +13,7 @@
     "pastanaga-angular": {
         "path": "/projects/pastanaga/src",
         "url": "git@github.com:plone/pastanaga-angular.git",
-        "branch": "guillotina"
+        "branch": "widgets-improvements"
     },
     "ngx-schema-form": {
         "path": "/projects/schema-form/src/lib",
