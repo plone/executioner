@@ -11,14 +11,14 @@
     <form *ngIf="type" #f="ngForm" (submit)="onSave(f.value)">
 
         <ng-container *ngIf="type !== 'User'">
-            <pa-input name="id" required ngModel>Id</pa-input>
-            <pa-input name="title" required ngModel>Title</pa-input>
+            <pa-input name="id" required ngModel errorHelp="Id is required">Id</pa-input>
+            <pa-input name="title" required ngModel errorHelp="Title is required">Title</pa-input>
         </ng-container>
 
         <ng-container *ngIf="type === 'User'">
-            <pa-input name="username" required ngModel>Name</pa-input>
-            <pa-input name="email" required ngModel>Email</pa-input>
-            <pa-input name="password" required type="password" ngModel>Password</pa-input>
+            <pa-input name="username" required ngModel errorHelp="Name is required">Name</pa-input>
+            <pa-input name="email" required ngModel errorHelp="Email is required">Email</pa-input>
+            <pa-input name="password" required type="password" ngModel errorHelp="Password is required">Password</pa-input>
         </ng-container>
 
         <pa-button (click)="onCancel()" color="secondary" size="small">Cancel</pa-button>
