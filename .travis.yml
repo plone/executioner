@@ -9,6 +9,7 @@ services:
 
 install:
   - npm install
+  - npm install start-server-and-test
 
 script:
   - npm run ci:cypress:run:guillotina;
