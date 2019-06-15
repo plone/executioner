@@ -1,24 +1,24 @@
 {
     "angular-traversal": {
-        "path": "/src",
-        "url": "git@github.com:makinacorpus/angular-traversal.git",
+        "path": "/projects/traversal/src/lib",
+        "url": "git@github.com:guillotinaweb/angular-traversal.git",
         "branch": "master"
     },
     "plone.restapi-angular": {
         "package": "@plone/restapi-angular",
-        "path": "/src",
+        "path": "/projects/plone-restapi-angular/src/lib",
         "url": "git@github.com:plone/plone.restapi-angular.git",
-        "branch": "master"
+        "branch": "angular7"
     },
     "pastanaga-angular": {
         "path": "/projects/pastanaga/src",
         "url": "git@github.com:plone/pastanaga-angular.git",
-        "branch": "guillotina"
+        "branch": "master"
     },
     "ngx-schema-form": {
         "path": "/projects/schema-form/src/lib",
-        "url": "git@github.com:makinacorpus/ngx-schema-form.git",
-        "branch": "master"
+        "url": "git@github.com:guillotinaweb/ngx-schema-form.git",
+        "branch": "angular7-2"
     },
     "nsf-pastanaga": {
         "path": "/projects/pastanaga/src/lib",

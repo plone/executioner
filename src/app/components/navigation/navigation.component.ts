@@ -2,7 +2,7 @@ import { Component, ElementRef } from '@angular/core';
 import { Services, TraversingComponent } from '@plone/restapi-angular';
 import { Target } from 'angular-traversal';
 import { concatMap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import {Observable, of} from 'rxjs';
 
 @Component({
     selector: 'g-navigation',
@@ -42,17 +42,24 @@ export class NavigationComponent extends TraversingComponent {
             }
 
             this.contextChildren = null;
+            let children = [];
             if (this.context['@type'] === 'Application') {
-                this.contextChildren = this.context.databases
+                children = this.context.databases
                 .map(db => ({path: '/' + db, title: db}));
             } else if (this.context['@type'] === 'Database') {
-                this.contextChildren = this.context.containers
+                children = this.context.containers
                 .map(container => ({path: this.contextPath + '/' + container, title: container}));
             } else if (!!this.context.items) {
-                this.contextChildren = this.context.items
+                children = this.context.items
                 .map(item => ({path: item['@id'], title: item['@name']}));
             }
+            children.sort(this.sortAlphabetically);
+            this.contextChildren = children;
         }
+    }
+
+    private sortAlphabetically(a: {title: string}, b: {title: string}): number {
+        return a.title < b.title ? -1 : 1;
     }
 
     private loadParent(resource, currentPath, child): Observable<any> {
@@ -67,7 +74,7 @@ export class NavigationComponent extends TraversingComponent {
                 concatMap(parent => this.loadParent(parent, parentPath, resource))
             );
         } else {
-            return Observable.of(null);
+            return of(null);
         }
     }
 
@@ -86,7 +93,7 @@ export class NavigationComponent extends TraversingComponent {
         } else if (resource.containers) {
             children = resource.containers.map(item => ({path: `${currentPath}/${item}`, title: item}));
         }
-        children.sort((a, b) => a.title < b.title ? -1 : 1);
+        children.sort(this.sortAlphabetically);
         return children;
     }
 

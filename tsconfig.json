@@ -2,6 +2,7 @@
     "compileOnSave": false,
     "compilerOptions": {
         "baseUrl": "src",
+        "importHelpers": true,
         "outDir": "./dist/out-tsc",
         "sourceMap": true,
         "declaration": false,
@@ -18,10 +19,10 @@
         ],
         "paths": {
             "angular-traversal": [
-                "develop/angular-traversal/src"
+                "develop/angular-traversal/projects/traversal/src/lib"
             ],
             "@plone/restapi-angular": [
-                "develop/plone.restapi-angular/src"
+                "develop/plone.restapi-angular/projects/plone-restapi-angular/src/lib"
             ],
             "pastanaga-angular": [
                 "develop/pastanaga-angular/projects/pastanaga/src"
