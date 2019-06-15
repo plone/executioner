@@ -9,7 +9,8 @@
     "build_prod": "ng build --prod --base-href /+admin/",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "ci:start-api-guillotina": "docker-compose -f g-api/docker-compose.yml up"
   },
   "private": true,
   "dependencies": {
