@@ -10,15 +10,16 @@ export class GenericAddView extends AddView {
     types: string[] = [];
     path: string;
     name: string;
+    error?: string;
 
     onTraverse(target: any) {
         if (!this.type) {
             if (target.context['@id']) {
                 this.services.resource.addableTypes(target.context['@id'])
-                .subscribe(types => {
-                    types.sort();
-                    this.types = types;
-                });
+                    .subscribe(types => {
+                        types.sort();
+                        this.types = types;
+                    });
             } else if (target.context['@type'] === 'Database') {
                 this.types = ['Container'];
             }
@@ -28,10 +29,14 @@ export class GenericAddView extends AddView {
     }
 
     onSave(model: any) {
+        this.error = '';
         model['@type'] = this.type;
-        this.services.resource.create(this.path, model).subscribe((res: any) => {
-            const path = res['@id'] ? res['@id'] : this.path + '/' + res['id'];
-            this.services.traverser.traverse(path);
-        });
+        this.services.resource.create(this.path, model).subscribe(
+            (res: any) => {
+                const path = res['@id'] ? res['@id'] : this.path + '/' + res['id'];
+                this.services.traverser.traverse(path);
+            },
+            error => this.error = error.message || `Something went wrong while creating ${name}`
+        );
     }
 }
