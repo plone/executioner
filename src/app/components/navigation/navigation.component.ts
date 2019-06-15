@@ -2,7 +2,7 @@ import { Component, ElementRef } from '@angular/core';
 import { Services, TraversingComponent } from '@plone/restapi-angular';
 import { Target } from 'angular-traversal';
 import { concatMap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import {Observable, of} from 'rxjs';
 
 @Component({
     selector: 'g-navigation',
@@ -67,7 +67,7 @@ export class NavigationComponent extends TraversingComponent {
                 concatMap(parent => this.loadParent(parent, parentPath, resource))
             );
         } else {
-            return Observable.of(null);
+            return of(null);
         }
     }
 

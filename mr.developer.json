@@ -1,12 +1,12 @@
 {
     "angular-traversal": {
-        "path": "/src",
+        "path": "/projects/traversal/src/lib",
         "url": "git@github.com:guillotinaweb/angular-traversal.git",
         "branch": "master"
     },
     "plone.restapi-angular": {
         "package": "@plone/restapi-angular",
-        "path": "/src",
+        "path": "/projects/plone-restapi-angular/src/lib",
         "url": "git@github.com:plone/plone.restapi-angular.git",
         "branch": "angular7"
     },

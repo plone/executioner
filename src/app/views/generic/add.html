@@ -9,8 +9,8 @@
 <ng-container *ngIf="type">
     <h2>Add new {{ type }} in {{ name }}</h2>
     <form *ngIf="type" #f="ngForm" (submit)="onSave(f.value)">
-        <pa-input name="id" ngModel>Id</pa-input>
-        <pa-input name="title" ngModel>Title</pa-input>
+        <pa-input [id]="'id-input-' + type" name="id" ngModel>Id</pa-input>
+        <pa-input [id]="'title-input-' + type" name="title" ngModel>Title</pa-input>
 
         <pa-button (click)="onCancel()" color="secondary" size="small">Cancel</pa-button>
         <pa-button (click)="onSave(f.value)" border size="small">Save</pa-button>
