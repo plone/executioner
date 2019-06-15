@@ -11,9 +11,7 @@ Given('admin login page', () => {
 
 Given('guillotina home page', () => {
     cy.visit('/+admin/');
-    cy.get('input[name="login"]').type(name);
-    cy.get('input[name="password"]').type(password);
-    cy.get('button[type="submit"]').click();
+    cy.login();
 });
 
 When('I enter user credentials', () => {

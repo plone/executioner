@@ -27,3 +27,12 @@ Build:
 ```
 npm run build_prod
 ```
+## Testing
+```
+npm install cypress
+npm install cypress-xpath
+npm install cypress-cucumber-preprocessor
+```
+npm run  ci:cypress:run:guillotina
+
+```
