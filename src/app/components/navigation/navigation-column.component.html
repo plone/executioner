@@ -7,3 +7,9 @@
         {{item.title}}
     </li>
 </ul>
+
+<pa-pagination *ngIf="pagination"
+               [page]="pagination.page"
+               [total]="pagination.total"
+               [pageSize]="pagination.pageSize"
+               (goTo)="loadPage($event)"></pa-pagination>

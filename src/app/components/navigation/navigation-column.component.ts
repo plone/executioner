@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { Services } from '@plone/restapi-angular';
-import { Application, buildContext, Container, Context, Database, NavigationModel } from './navigation.models';
+import { Application, buildContext, Container, Context, Database, NavigationModel, PaginationModel } from './navigation.models';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -17,6 +17,7 @@ export class NavigationColumnComponent implements OnChanges {
     context: Context;
     children: NavigationModel[];
     isApplication: boolean;
+    pagination: PaginationModel;
 
     constructor(
         public services: Services,
@@ -36,6 +37,17 @@ export class NavigationColumnComponent implements OnChanges {
         if (!!changes.activePath) {
             this.extractChildren();
         }
+    }
+
+    loadPage(page: number) {
+        this.services.resource.items(this.path, page).subscribe(
+            data => {
+                this.pagination = new PaginationModel(data);
+                this.children = data.items
+                    .map(item => ({path: this.services.api.getPath(item['@id']), title: item['@name']}))
+                    .sort(this.sortAlphabetically);
+            }
+        );
     }
 
     private extractChildren() {
@@ -62,6 +74,7 @@ export class NavigationColumnComponent implements OnChanges {
     private getContainerChildrenObs(): Observable<NavigationModel[]> {
         return this.services.resource.items(this.path).pipe(
             map(data => {
+                this.pagination = new PaginationModel(data);
                 return data.items.map(item => ({path: this.services.api.getPath(item['@id']), title: item['@name']}));
             })
         );
