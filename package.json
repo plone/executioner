@@ -18,7 +18,9 @@
     "cy:test:fixture:teardown": "node cypress/support/reset-fixture.js teardown",
     "ci:start-api-guillotina": "docker-compose -f g-api/docker-compose.yml up > /dev/null",
     "ci:start-frontend-guillotina": "RAZZLE_API_PATH=http://localhost:8081/db/container yarn build && start-test start:prod http-get://localhost:4200 cypress:run:guillotina",
-    "ci:cypress:run:guillotina": "start-test ci:start-api-guillotina http-get://localhost:8081 cypress:run"
+    "ci:cypress:run:guillotina": "start-test ci:start-api-guillotina http-get://localhost:8081 cypress:run",
+      "ci:cypress:angular": "start-test start http-get://localhost:4200 ci:cypress:run:guillotina"
+
   },
     "cypress-cucumber-preprocessor": {
         "nonGlobalStepDefinitions": true

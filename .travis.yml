@@ -12,6 +12,6 @@ install:
   - npm install start-server-and-test
 
 script:
-  - npm run ci:cypress:run:guillotina
+  - npm run ci:cypress:angular
 
 sudo: required

@@ -7,7 +7,7 @@ import { deleteGuillotinaContainer, createGuillotinaContainer } from '../../supp
 const container_new_title = 'cycontainer updated'
 
 Given('admin user in db page', () => {
-  cy.visit('/+admin/db');
+  cy.visit('/db');
   cy.login();
 });
 
@@ -24,8 +24,8 @@ When('I add a new container', () => {
        const mycontainer = c;
        cy.get('pa-button[icon="add"]').click();
        cy.get('a').contains('Container').click();
-       cy.get('input[name="id"]').type(mycontainer.id);
-       cy.get('input[name="title"]').type(mycontainer.id);
+       cy.get('#id-input-Container-input').type(mycontainer.id);
+       cy.get('#title-input-Container-input').type(mycontainer.id);
        cy.get('button[aria-label="Save"]').click();
      })
 

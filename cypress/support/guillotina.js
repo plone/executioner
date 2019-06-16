@@ -4,7 +4,7 @@ export function setupGuillotina() {
     Authorization: 'Basic cm9vdDpyb290',
     'Content-Type': 'application/json',
   };
-  const api_url = baseUrl + '/db';
+  const api_url = Cypress.env('guillotina') + '/db';
 
   /*cy.request({
     method: 'POST',
@@ -77,7 +77,7 @@ export function tearDownGuillotina() {
     Authorization: 'Basic cm9vdDpyb290',
     'Content-Type': 'application/json',
   };
-  const api_url = 'http://localhost:8081/db';
+  const api_url = Cypress.env('guillotina') + '/db';
 
   cy.request({
     method: 'DELETE',
@@ -91,7 +91,7 @@ export function deleteGuillotinaContainer() {
     Authorization: 'Basic cm9vdDpyb290',
     'Content-Type': 'application/json',
   };
-  const api_url = baseUrl + '/db/cycontainer';
+  const api_url = Cypress.env('guillotina') + '/db/cycontainer';
 
   cy.request({
     method: 'DELETE',
@@ -105,7 +105,7 @@ export function createGuillotinaContainer() {
     Authorization: 'Basic cm9vdDpyb290',
     'Content-Type': 'application/json',
   };
-  const api_url = baseUrl +'/db';
+  const api_url = Cypress.env('guillotina') +'/db';
 
   cy.request({
       method: 'POST',
@@ -120,7 +120,7 @@ export function shareGuillotinaContainer() {
     Authorization: 'Basic cm9vdDpyb290',
     'Content-Type': 'application/json',
   };
-  const api_url = baseUrl +'/db';
+  const api_url = Cypress.env('guillotina') + '/db';
 
   cy.request({
       method: 'POST',

@@ -23,8 +23,8 @@ When('I share with a user', () => {
    });
 
 Then('permissions updated toast is displayed', () => {
-        cy.get('header.o-toast-header').should('be.visible');
-        cy.get('header.o-toast-header').should('contain','Permissions updated');
+        cy.get('header.pa-toast-header').should('be.visible');
+        cy.get('header.pa-toast-header').should('contain','Permissions updated');
     });
 
 

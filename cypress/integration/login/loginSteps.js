@@ -6,17 +6,17 @@ const name = 'root'
 const password = 'root'
 
 Given('admin login page', () => {
-  cy.visit('/+admin/');
+  cy.visit('/');
 });
 
 Given('guillotina home page', () => {
-    cy.visit('/+admin/');
+    cy.visit('/');
     cy.login();
 });
 
 When('I enter user credentials', () => {
-        cy.get('input[name="login"]').type(name);
-        cy.get('input[name="password"]').type(password);
+        cy.get('#login-input-username-input').type(name);
+        cy.get('#login-input-password-input').type(password);
     });
 
 When('I log in', () => {
@@ -37,7 +37,7 @@ Then('I see home page', () => {
 
 Then('I am in login page', () => {
 
-        expect('input[name="login"]').to.exist
-        expect('input[name="password"]').to.exist
+        expect('#login-input-username-input').to.exist
+        expect('#login-input-password-input').to.exist
         expect('button[type="submit"]').to.exist
      });

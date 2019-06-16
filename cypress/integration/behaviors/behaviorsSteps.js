@@ -12,7 +12,7 @@ When('I add a new behavior', () => {
 Then('the behavior is enabled', () => {
     cy.fixture('container.json').as('container').then((c) => {
         const mycontainer = c;
-        cy.visit('/+admin/db/' + mycontainer.id);
+        cy.visit('/db/' + mycontainer.id);
         cy.get('h4').contains('guillotina.behaviors');
     })
 
