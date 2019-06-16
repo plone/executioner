@@ -29,6 +29,16 @@ export class NavigationColumnComponent implements OnChanges {
                 this.extractChildren();
             });
         }
+        // update children list whenever current path is direct parent of active path
+        // (so newly created Containers appears directly in children list)
+        if (!!changes.activePath && this.path !== this.activePath) {
+            const activeParts = this.activePath.split('/');
+            activeParts.pop();
+            const parentPath = activeParts.join('/') + '/';
+            if (parentPath === this.path) {
+                this.extractChildren();
+            }
+        }
     }
 
     private extractChildren() {
@@ -39,7 +49,7 @@ export class NavigationColumnComponent implements OnChanges {
         } else if (this.context instanceof Database) {
             childrenObs = of(this.context.containers.map(container => ({title: container, path: `${path}${container}`})));
         } else if (this.context instanceof Container) {
-            childrenObs = this.getContainerChildrenObs(this.context);
+            childrenObs = this.getContainerChildrenObs();
         }
         childrenObs.subscribe(children => {
             children.sort(this.sortAlphabetically);
@@ -52,20 +62,11 @@ export class NavigationColumnComponent implements OnChanges {
         return a.title < b.title ? -1 : 1;
     }
 
-    private getContainerChildrenObs(container: Container): Observable<NavigationModel[]> {
-        let childrenObservable: Observable<NavigationModel[]> = of([]);
-        if (!!container.items) {
-            const children = container.items.map(item => ({path: this.services.api.getPath(item['@id']), title: item['@name']}));
-            if (children.length === 0) {
-                childrenObservable = this.services.resource.items(this.path).pipe(
-                    map(data => {
-                        return data.items.map(item => ({path: this.services.api.getPath(item['@id']), title: item['@name']}));
-                    })
-                );
-            } else {
-                childrenObservable = of(children);
-            }
-        }
-        return childrenObservable;
+    private getContainerChildrenObs(): Observable<NavigationModel[]> {
+        return this.services.resource.items(this.path).pipe(
+            map(data => {
+                return data.items.map(item => ({path: this.services.api.getPath(item['@id']), title: item['@name']}));
+            })
+        );
     }
 }
