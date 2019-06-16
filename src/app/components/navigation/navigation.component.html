@@ -1,18 +1,3 @@
 <div class="list-container" *ngFor="let parent of parentList">
-    <g-toolbar [context]="parent.resource" [parentPath]="parent.parentPath"></g-toolbar>
-    <ul>
-        <li *ngFor="let item of parent.children" [traverseTo]="item.path"
-            [class.active]="context['@id'] === item.path || context['@id'].startsWith(item.path + '/')">
-            {{item.title}}
-        </li>
-    </ul>
-</div>
-
-<div class="list-container" *ngIf="!!contextChildren">
-    <g-toolbar [parentPath]="contextPath" [canAdd]="!isApplication"></g-toolbar>
-    <ul>
-        <li *ngFor="let item of contextChildren" [traverseTo]="item.path">
-            {{item.title}}
-        </li>
-    </ul>
+    <g-navigation-column [path]="parent" [activePath]="contextPath" (columnLoaded)="scrollRight()"></g-navigation-column>
 </div>

@@ -1,0 +1,7 @@
+<g-toolbar [context]="context" [parentPath]="path"></g-toolbar>
+<ul>
+    <li *ngFor="let item of children" [traverseTo]="item.path"
+        [class.active]="activePath === item.path || activePath.startsWith(item.path)">
+        {{item.title}}
+    </li>
+</ul>

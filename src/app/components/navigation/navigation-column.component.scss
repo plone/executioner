@@ -1,0 +1,30 @@
+@import "../../styles/variables";
+:host {
+    ul {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    li {
+        cursor: pointer;
+        height: 30px;
+        line-height: 30px;
+        padding: 0 12px;
+
+        &:not(:last-child) {
+            border-bottom: 1px solid $azure-dark;
+        }
+
+        &.active {
+            background: $sky;
+
+            &:hover {
+                background: $sky-dark;
+            }
+        }
+    }
+
+    li:hover {
+        background: $sky-light;
+    }
+}
