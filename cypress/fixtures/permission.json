@@ -1,0 +1,7 @@
+{
+    "prinperm": [{
+        "principal": "user1",
+        "permission": "guillotina.AccessContent",
+        "setting": "AllowSingle"
+    }]
+}

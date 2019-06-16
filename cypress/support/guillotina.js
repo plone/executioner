@@ -114,3 +114,43 @@ export function createGuillotinaContainer() {
       body: { '@type': 'Container', id: 'cycontainer' },
     }).then(response => console.log('container created'));
 }
+
+export function shareGuillotinaContainer() {
+  const headers = {
+    Authorization: 'Basic cm9vdDpyb290',
+    'Content-Type': 'application/json',
+  };
+  const api_url = baseUrl +'/db';
+
+  cy.request({
+      method: 'POST',
+      url: `${api_url}/cycontainer/@sharing`,
+      headers,
+      body: {
+        roleperm: [
+          {
+            setting: 'AllowSingle',
+            role: 'guillotina.Anonymous',
+            permission: 'guillotina.ViewContent',
+          },
+          {
+            setting: 'AllowSingle',
+            role: 'guillotina.Anonymous',
+            permission: 'guillotina.AccessContent',
+          },
+        ],
+        prinrole: [
+          {
+            setting: 'Allow',
+            role: 'guillotina.Manager',
+            principal: 'admin',
+          },
+          {
+            setting: 'Allow',
+            role: 'guillotina.Owner',
+            principal: 'admin',
+          },
+        ],
+      },
+    }).then(response => console.log('permissions for default user set'));
+}

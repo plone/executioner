@@ -10,8 +10,6 @@ Feature: Manage behaviors
         When I add a new behavior
         Then the behavior is enabled
 
-    #Scenario: Propagate behavior to my folder
-
     #TBD: test implementation blocked by the confirmation pop-up
     #Scenario: Remove a behavior from my container
 

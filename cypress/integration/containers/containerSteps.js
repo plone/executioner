@@ -75,10 +75,6 @@ Then('container uid is shown', () => {
         cy.get('dt').should('contain', 'UID');
     });
 
-Then('updated toast is displayed', () => {
-        expect('header.o-toast-header').to.exist;
-    });
-
 Then('the new title is displayed in the details', () => {
     cy.fixture('container.json').as('container').then((c) => {
                const mycontainer = c;
