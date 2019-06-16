@@ -1,21 +1,7 @@
 import { Component, ElementRef } from '@angular/core';
 import { Services, TraversingComponent } from '@plone/restapi-angular';
 import { Target } from 'angular-traversal';
-import { concatMap, map, tap } from 'rxjs/operators';
-import {Observable, of} from 'rxjs';
-import { Application, buildContext, Container, Context, Database, IContext, NavigationModel } from './navigation.models';
-
-
-export class PaginationModel {
-    total: number;
-    pageSize: number;
-    page: number;
-    constructor(data: {total: number, page_size: number, page: number}) {
-        this.total = data.total;
-        this.pageSize = data.page_size;
-        this.page = data.page;
-    }
-}
+import { buildContext, Context, Database, IContext } from './navigation.models';
 
 @Component({
     selector: 'g-navigation',
