@@ -16,6 +16,7 @@ export class NavigationColumnComponent implements OnChanges {
 
     context: Context;
     children: NavigationModel[];
+    isApplication: boolean;
 
     constructor(
         public services: Services,
@@ -26,18 +27,14 @@ export class NavigationColumnComponent implements OnChanges {
         if (!!changes.path && !!changes.path.currentValue) {
             this.services.resource.get(changes.path.currentValue).subscribe(resource => {
                 this.context = buildContext(resource);
+                this.isApplication = this.context instanceof Application;
                 this.extractChildren();
             });
         }
-        // update children list whenever current path is direct parent of active path
-        // (so newly created Containers appears directly in children list)
-        if (!!changes.activePath && this.path !== this.activePath) {
-            const activeParts = this.activePath.split('/');
-            activeParts.pop();
-            const parentPath = activeParts.join('/') + '/';
-            if (parentPath === this.path) {
-                this.extractChildren();
-            }
+        // update children list whenever active path changes
+        // (so children list is always up-to-date after creation/deletion)
+        if (!!changes.activePath) {
+            this.extractChildren();
         }
     }
 

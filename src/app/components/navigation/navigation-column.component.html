@@ -1,7 +1,9 @@
-<g-toolbar [context]="context" [parentPath]="path"></g-toolbar>
+<g-toolbar [activePath]="activePath"
+           [hasButtons]="!isApplication && children?.length > 0"
+           [canAdd]="!isApplication"></g-toolbar>
 <ul>
     <li *ngFor="let item of children" [traverseTo]="item.path"
-        [class.active]="activePath === item.path || activePath.startsWith(item.path)">
+        [class.active]="activePath === item.path || activePath.startsWith(item.path + '/')">
         {{item.title}}
     </li>
 </ul>

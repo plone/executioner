@@ -1,32 +1,28 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Services } from '@plone/restapi-angular';
-import { Container, Context } from '../navigation/navigation.models';
+import { buildContext, Container, Context } from '../navigation/navigation.models';
 
 @Component({
     selector: 'g-toolbar',
     templateUrl: './toolbar.component.html',
     styleUrls: ['./toolbar.component.scss'],
 })
-export class ToolbarComponent implements OnChanges {
-    @Input() context: Context | Container;
-    @Input() parentPath: string;
-    canAdd = false;
-    hasButtons = false;
+export class ToolbarComponent {
+    @Input() activePath: string;
+    @Input() canAdd = true;
+    @Input() hasButtons = false;
 
     constructor(private services: Services) {}
 
-    ngOnChanges(changes: SimpleChanges): void {
-        if (changes.context && changes.context.currentValue) {
-            this.hasButtons = changes.context.currentValue instanceof Container;
-            this.canAdd = this.hasButtons && this.context.is_folderish;
-        }
-    }
-
     delete() {
-        if (this.context instanceof Container && confirm('Delete ' + this.context.title)) {
-            const parent = this.context.parent['@id'] || '/';
-            this.services.resource.delete(this.context['@id']).subscribe(() => {
-                this.services.traverser.traverse(parent);
+        if (!!this.activePath) {
+            this.services.resource.get(this.activePath).subscribe(context => {
+                if (confirm('Delete ' + context.title)) {
+                    const parent = context.parent['@id'] || '/';
+                    this.services.resource.delete(context['@id']).subscribe(() => {
+                        this.services.traverser.traverse(parent);
+                    });
+                }
             });
         }
     }
