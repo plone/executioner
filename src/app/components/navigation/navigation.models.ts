@@ -60,17 +60,10 @@ export const buildContext = (data: IContext): Context => {
             return new Application(data);
         case 'Database':
             return new Database(data);
-        case 'Container':
-        case 'Document':
-        case 'File':
-        case 'Folder':
-        case 'Image':
-            return new Container(data);
         default:
-            return new Context(data);
+            return new Container(data);
     }
 };
-
 
 export class NavigationModel {
     path: string;
@@ -78,5 +71,16 @@ export class NavigationModel {
     constructor(data: {path: string, title: string}) {
         this.path = data.path;
         this.title = data.title;
+    }
+}
+
+export class PaginationModel {
+    total: number;
+    pageSize: number;
+    page: number;
+    constructor(data: {total: number, page_size: number, page: number}) {
+        this.total = data.total;
+        this.pageSize = data.page_size;
+        this.page = data.page;
     }
 }
