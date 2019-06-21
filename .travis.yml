@@ -10,6 +10,7 @@ services:
 install:
   - npm install
   - npm install start-server-and-test
+  - missdev --https
 
 script:
   - npm run ci:cypress:angular
