@@ -7,9 +7,10 @@
     "start": "ng serve",
     "build": "ng build",
     "build_prod": "ng build --prod --base-href /+admin/",
-    "test": "ng test",
+    "test": "jest --no-cache",
+    "test:watch": "jest --watch",
+    "test:ci": "jest --runInBand --ci",
     "lint": "ng lint",
-    "e2e": "ng e2e",
     "cypress:open": "CYPRESS_API=guillotina cypress open",
     "cypress:run": "CYPRESS_API=guillotina cypress run",
     "cypress:run:guillotina": "CYPRESS_API=guillotina cypress run",
@@ -57,16 +58,14 @@
     "@angular/language-service": "^7.2.15",
     "@types/jasmine": "~2.8.6",
     "@types/jasminewd2": "~2.0.3",
+    "@types/jest": "^24.0.15",
     "@types/node": "~8.9.4",
     "codelyzer": "~4.2.1",
     "cypress-xpath": "^1.4.0",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
-    "karma": "~1.7.1",
-    "karma-chrome-launcher": "~2.2.0",
-    "karma-coverage-istanbul-reporter": "~1.4.2",
-    "karma-jasmine": "~1.1.1",
-    "karma-jasmine-html-reporter": "^0.2.2",
+    "jest": "^24.8.0",
+    "jest-preset-angular": "^7.1.1",
     "mrs-developer": "^1.1.0",
     "ts-node": "~5.0.1",
     "tslint": "~5.9.1",
@@ -75,5 +74,15 @@
   "contributors": [
     "Mathilde Pellerin",
     "Eric Brehault"
-  ]
+  ],
+  "jest": {
+    "preset": "jest-preset-angular",
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/setupJest.ts"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/src/develop"
+    ]
+  }
 }

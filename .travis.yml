@@ -5,14 +5,15 @@ node_js:
   - 'node'
 
 services:
-  - docker
+  # - docker
 
 install:
   - npm install
-  - npm install start-server-and-test
+#  - npm install start-server-and-test
   - missdev --https
 
 script:
-  - npm run ci:cypress:angular
+  - npm run build_prod
+#  - npm run ci:cypress:angular
 
 sudo: required
