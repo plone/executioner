@@ -1,0 +1,19 @@
+language: node_js
+dist: trusty
+
+node_js:
+  - 'node'
+
+services:
+  # - docker
+
+install:
+  - npm install
+#  - npm install start-server-and-test
+  - missdev --https
+
+script:
+  - npm run build_prod
+#  - npm run ci:cypress:angular
+
+sudo: required
