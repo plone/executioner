@@ -20,5 +20,8 @@ export class AdminService {
         this.services.traverser.traverseHere();
     }
 
-
+    doTokenLogin(token: string) {
+        this.services.authentication.setAuthToken(token);
+        this.services.traverser.traverseHere();
+    }
 }
