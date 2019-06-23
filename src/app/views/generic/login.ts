@@ -10,6 +10,7 @@ import { map, filter, tap } from 'rxjs/operators';
 })
 export class BasicAuthLoginComponent extends LoginView implements OnInit {
     isPending: boolean;
+    useToken = false;
 
     constructor(
         public services: Services,
@@ -40,8 +41,13 @@ export class BasicAuthLoginComponent extends LoginView implements OnInit {
         ).subscribe();
     }
 
-    onSubmit(data: LoginInfo) {
+    onSubmit(data: LoginInfo | {token: string}) {
         this.error = '';
-        this.adminService.doLogin(data.login, data.password);
+        if (!this.useToken) {
+            const info = data as LoginInfo;
+            this.adminService.doLogin(info.login, info.password);
+        } else if (!!data['token']) {
+            this.adminService.doTokenLogin(data['token']);
+        }
     }
 }

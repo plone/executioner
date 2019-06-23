@@ -77,10 +77,8 @@ export class NavigationModel {
 export class PaginationModel {
     total: number;
     pageSize: number;
-    page: number;
-    constructor(data: {total: number, page_size: number, page: number}) {
-        this.total = data.total;
+    constructor(data: {items_count: number, page_size: number}) {
+        this.total = data.items_count;
         this.pageSize = data.page_size;
-        this.page = data.page;
     }
 }

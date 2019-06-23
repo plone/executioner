@@ -10,13 +10,13 @@
         "path": "/projects/plone-restapi-angular/src/lib",
         "url": "git@github.com:plone/plone.restapi-angular.git",
         "https": "https://github.com/plone/plone.restapi-angular.git",
-        "branch": "angular7"
+        "branch": "guillotina-5"
     },
     "pastanaga-angular": {
         "path": "/projects/pastanaga/src",
         "url": "git@github.com:plone/pastanaga-angular.git",
         "https": "https://github.com/plone/pastanaga-angular.git",
-        "tag": "1.2.13"
+        "tag": "1.2.14"
     },
     "ngx-schema-form": {
         "path": "/projects/schema-form/src/lib",

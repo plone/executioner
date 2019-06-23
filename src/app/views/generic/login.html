@@ -1,10 +1,16 @@
 <form #form="ngForm" (ngSubmit)="onSubmit(form.value)">
     <p class="error" *ngIf="error">{{ error }}</p>
 
-    <pa-input id="login-input-username" name="login" [disabled]="isPending" ngModel>Username</pa-input>
-    <pa-input id="login-input-password" type="password" name="password" [disabled]="isPending" ngModel>Password</pa-input>
-
+    <ng-container *ngIf="!useToken">
+        <pa-input name="login" [disabled]="isPending" ngModel>Username</pa-input>
+        <pa-input type="password" name="password" [disabled]="isPending" ngModel>Password</pa-input>
+    </ng-container>
+    
+    <pa-toggle [(isSelected)]="useToken" yesLabel="Yes" noLabel="No">Use token</pa-toggle>
+    <pa-input *ngIf="useToken" name="token" [disabled]="isPending" ngModel>Token</pa-input>
+    
     <footer>
         <pa-button border type="submit" [disabled]="isPending">{{isPending ? 'Loading…' : 'Login'}}</pa-button>
     </footer>
+    
 </form>
