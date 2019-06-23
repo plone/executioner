@@ -42,8 +42,8 @@ export class NavigationColumnComponent implements OnChanges {
     loadPage(page: number) {
         this.services.resource.items(this.path, page).subscribe(
             data => {
-                this.pagination = new PaginationModel(data);
-                this.children = data.items
+                this.pagination = new PaginationModel({...data, page_size: 20});
+                this.children = data.member
                     .map(item => ({path: this.services.api.getPath(item['@id']), title: item['@name']}))
                     .sort(this.sortAlphabetically);
             }
@@ -74,8 +74,8 @@ export class NavigationColumnComponent implements OnChanges {
     private getContainerChildrenObs(): Observable<NavigationModel[]> {
         return this.services.resource.items(this.path).pipe(
             map(data => {
-                this.pagination = new PaginationModel(data);
-                return data.items.map(item => ({path: this.services.api.getPath(item['@id']), title: item['@name']}));
+                this.pagination = new PaginationModel({...data, page_size: 20});
+                return data.member.map(item => ({path: this.services.api.getPath(item['@id']), title: item['@name']}));
             })
         );
     }
