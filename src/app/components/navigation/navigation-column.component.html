@@ -1,0 +1,15 @@
+<g-toolbar [path]="path"
+           [hasButtons]="!isApplication && children?.length > 0"
+           [canAdd]="!isApplication"></g-toolbar>
+<ul>
+    <li *ngFor="let item of children" [traverseTo]="item.path"
+        [class.active]="activePath === item.path || activePath.startsWith(item.path + '/')">
+        {{item.title}}
+    </li>
+</ul>
+
+<pa-pagination *ngIf="pagination"
+               [page]="pagination.page"
+               [total]="pagination.total"
+               [pageSize]="pagination.pageSize"
+               (goTo)="loadPage($event)"></pa-pagination>

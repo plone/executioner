@@ -1,12 +1,12 @@
-<pa-button *ngIf="canAdd" icon="add" [traverseTo]="parentPath + '/@@add'"></pa-button>
+<pa-button *ngIf="canAdd" icon="add" [traverseTo]="path + '/@@add'"></pa-button>
 
-<div class="selected-context" *ngIf="!!context">
+<div class="selected-context" *ngIf="hasButtons">
     <pa-button color="secondary"
-               icon="pen" [traverseTo]="context['@id'] + '/@@edit'"></pa-button>
+               icon="pen" [traverseTo]="path + '/@@edit'"></pa-button>
     <pa-button color="secondary"
-               icon="properties" [traverseTo]="context['@id'] + '/@@behaviors'"></pa-button>
+               icon="properties" [traverseTo]="path + '/@@behaviors'"></pa-button>
     <pa-button color="secondary"
-               icon="sharing" [traverseTo]="context['@id'] + '/@@sharing'"></pa-button>
+               icon="sharing" [traverseTo]="path + '/@@sharing'"></pa-button>
     <pa-button color="destructive"
                icon="delete" (click)="delete()"></pa-button>
 </div>

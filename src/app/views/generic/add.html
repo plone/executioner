@@ -12,6 +12,8 @@
         <pa-input [id]="'id-input-' + type" name="id" ngModel>Id</pa-input>
         <pa-input [id]="'title-input-' + type" name="title" ngModel>Title</pa-input>
 
+        <p *ngIf="error" class="error">{{error}}</p>
+
         <pa-button (click)="onCancel()" color="secondary" size="small">Cancel</pa-button>
         <pa-button (click)="onSave(f.value)" border size="small">Save</pa-button>
     </form>

@@ -1,6 +1,6 @@
 {
   "name": "executioner",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -46,7 +46,6 @@
     "medium-editor": "~5.23.3",
     "ngx-schema-form": "^2.1.0-beta.1",
     "rxjs": "^6.0.0",
-    "rxjs-compat": "~6.2.2",
     "tslib": "^1.9.0",
     "z-schema": "^3.17.0",
     "zone.js": "^0.8.26"
