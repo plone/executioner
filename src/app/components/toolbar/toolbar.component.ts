@@ -8,15 +8,15 @@ import { buildContext, Container, Context } from '../navigation/navigation.model
     styleUrls: ['./toolbar.component.scss'],
 })
 export class ToolbarComponent {
-    @Input() activePath: string;
+    @Input() path: string;
     @Input() canAdd = true;
     @Input() hasButtons = false;
 
     constructor(private services: Services) {}
 
     delete() {
-        if (!!this.activePath) {
-            this.services.resource.get(this.activePath).subscribe(context => {
+        if (!!this.path) {
+            this.services.resource.get(this.path).subscribe(context => {
                 if (confirm('Delete ' + context.title)) {
                     const parent = context.parent['@id'] || '/';
                     this.services.resource.delete(context['@id']).subscribe(() => {
