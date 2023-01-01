@@ -42,7 +42,7 @@
     "angular-svg-icon": "^7.2.0",
     "core-js": "^2.5.4",
     "cypress": "^3.3.1",
-    "cypress-cucumber-preprocessor": "^1.12.0",
+    "cypress-cucumber-preprocessor": "^1.19.2",
     "medium-editor": "~5.23.3",
     "ngx-schema-form": "^2.1.0-beta.1",
     "rxjs": "^6.0.0",
@@ -51,7 +51,7 @@
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.13.0",
+    "@angular-devkit/build-angular": "~15.0.4",
     "@angular/cli": "^7.3.6",
     "@angular/compiler-cli": "^7.2.15",
     "@angular/language-service": "^7.2.15",
