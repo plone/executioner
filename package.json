@@ -41,7 +41,7 @@
     "@ngx-translate/http-loader": "^3.0.1",
     "angular-svg-icon": "^7.2.0",
     "core-js": "^2.5.4",
-    "cypress": "^3.3.1",
+    "cypress": "^12.7.0",
     "cypress-cucumber-preprocessor": "^1.12.0",
     "medium-editor": "~5.23.3",
     "ngx-schema-form": "^2.1.0-beta.1",
